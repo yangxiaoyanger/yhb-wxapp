@@ -1,0 +1,26 @@
+<view class='mainView'>
+   <view class='loginView'>
+
+    <image src='../img/phone.png' class='img1'></image>
+    <!-- <div class="clear"></div>  -->
+    <input  class='iphone' maxlength="11" placeholder="请输入手机号" bindinput ="userNameInput" />
+
+
+   </view>
+
+ 
+   <!-- <div class="clear"></div>  -->
+    <view  class='passwordView'>
+      <image src='../img/password.png' class='img2'></image>
+     <input  class='password'   placeholder="请输入验证码" bindinput="passWdInput" />
+    <button disabled='{{disabled}}' data-id="2"   class='btn'     bindtap="getVerificationCode">
+{{time}}
+</button>
+    </view>
+
+    <button class='surebtn'  bindtap="push">
+        确认
+    </button>
+
+
+</view>

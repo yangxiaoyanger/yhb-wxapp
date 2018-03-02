@@ -1,0 +1,5 @@
+
+<view class='mainView' bindtap='click'>
+<image src='../img/add.png' class='img1'></image>
+<text class='add'>点击加油</text>
+</view>

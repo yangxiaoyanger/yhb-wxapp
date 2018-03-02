@@ -1,0 +1,20 @@
+<view class='mianView'>
+
+    
+
+  <view class='contentView'  wx:for="{{charing_list}}"   wx:fo  r-item="item" wx:key="*this" data-index="{{index}}">
+  <image class='img' src='../../img/consumption.png'></image>
+  <text class='title'>{{item.station_name}}</text>
+  <text class='subtitle'>{{item.started_time}}</text>
+  <text class='endtitle'>{{item.address}}</text>
+  <text class='righttitle'>-{{item.total_cost}}</text>
+  </view>
+
+    <view wx:if="{{charing_list.lenght <= 0}}" class='empty'> 
+
+    
+        暂无数据
+     </view> 
+
+
+</view>

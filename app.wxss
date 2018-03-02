@@ -1,0 +1,9 @@
+@import 'libs/weui.wxss';
+
+
+page {
+  display: block;
+  background-color: #f0eff5;
+  font-family: "微软雅黑";
+  font-size: 28rpx;
+}

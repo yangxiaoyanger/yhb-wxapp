@@ -1,0 +1,85 @@
+.mainView
+{
+
+}
+.loginView
+{
+
+  margin-left: 40rpx;
+  margin-top: 40rpx;
+  margin-right: 40rpx;
+  background-color: white;
+  border: 0.5rpx solid #cccccc;
+  
+
+}
+.img1
+{
+  float: left;
+  width: 20rpx;
+  height: 36rpx;
+  margin-left: 15rpx;
+  margin-top: 20rpx;
+}
+
+.img2
+{
+  float: left;
+   width: 18rpx;
+  height: 36rpx;
+  margin-left: 15rpx;
+  margin-top: 20rpx;
+}
+
+
+.iphone
+{
+  
+  height: 75rpx;
+  line-height: 75rpx;
+  margin-left: 40rpx;
+ 
+}
+.password
+{
+    height: 75rpx;
+  line-height: 75rpx;
+  float: left;
+  margin-left: 10rpx;
+}
+
+
+.passwordView
+{
+  margin-left: 40rpx;
+   margin-right: 40rpx; 
+  background-color: white;
+  height: 75rpx;
+  line-height: 75rpx;
+   border: 0.5rpx solid #cccccc;
+   border-top: none;
+}
+
+.btn
+{
+   float: right;
+   background: #1677cb;
+   color: white;
+   width: 150rpx;
+   height: 48rpx;
+   font-size: 18rpx;
+   line-height: 48rpx;
+    margin-top: 15rpx;
+     margin-right: 10rpx;
+}
+
+
+.surebtn
+{
+  
+  background: #1677cb;
+  color: white;
+  margin-left: 30rpx;
+  margin-top: 40rpx;
+  margin-right: 30rpx;
+}

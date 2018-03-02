@@ -1,0 +1,53 @@
+
+
+<view class="container">
+    <view class="user-info" >
+        <image src='../img/mine_back.png' class='img1'> </image>
+        <image src="{{userInfo.avatarUrl}}" class="user-avatar"></image>
+        <view class="user-nickname">
+            {{userInfo.nickName}}
+        </view>
+       
+    </view>
+   
+
+</view>
+
+
+  <view class='midde'> 
+  <view class='left' bindtap='xianjin'>
+  <view class='text1'>
+     {{cash_account}}
+   </view>
+   <view class='text3'>
+    现金账户
+   </view>
+  
+  </view>
+  <view class='right'>
+  
+  <view class='text2'>
+    0.00
+   </view>
+<view class='text4' >
+    白金账户
+   </view>
+
+  </view>
+ 
+
+  
+  </view>
+
+
+
+
+<view class='endView'>
+
+<view class='topview1' bindtap ='xiaofei' >  <image src='../img/jilu.png' class='img2'></image> <view class='textend'>消费记录</view> </view>
+<view class='topview2' bindtap = 'yijian'>   <image src='../img/idea.png' class='img2'></image> <view class='textend'> 意见反馈</view> </view>
+<view class='topview3' bindtap = 'zhanghu'> <image src='../img/mingxi.png' class='img2'></image> <view class='textend'> 账户明细</view>  </view>
+<view class='topview4'bindtap ='youhui' > <image src='../img/jilu.png' class='img2'></image> <view class='textend'> 优惠券</view>  </view>
+
+
+</view>

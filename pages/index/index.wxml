@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<view class='mianView'>
+
+  <view class='contentView' bindtap='pushMap' wx:for="{{info_list}}"   wx:fo  r-item="item" wx:key="*this" data-index="{{index}}">
+  <image class='img' src='{{item.icon}}'></image>
+  <text class='title'>{{item.name}}</text>
+  <text class='subtitle'>{{item.address}}</text>
+  <text class='endtitle'>柴油价格{{item.price}}</text>
+  <text class='righttitle'>{{item.distance}}公里</text>
+  </view>
+
+</view>

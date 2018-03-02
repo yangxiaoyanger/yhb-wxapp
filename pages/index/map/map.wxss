@@ -1,0 +1,18 @@
+.mainView
+{
+  background: white;
+  height: 150rpx;
+}
+.view1
+{
+  padding-top: 30rpx;
+  padding-left: 40rpx;
+   font-size: 35rpx;
+}
+
+.view2
+{
+  padding-top: 20rpx;
+  padding-left: 40rpx;
+ 
+}

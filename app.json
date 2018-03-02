@@ -1,0 +1,52 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/login/login",
+    "pages/gasoline/gasoline",
+    "pages/gasoline/shop/shop",
+    "pages/index/map/map",
+    "pages/mine/mine",
+    "pages/mine/idea/idea",
+    "pages/mine/discount/discount",
+    "pages/mine/record/record",
+    "pages/mine/account/account",
+    "pages/mine/detailed/detailed",
+    "pages/mine/recharge/recharge",
+    "pages/logs/logs"
+   
+  ],
+  "window":{
+   "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "油惠宝",
+  "backgroundColor": "#fff",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "gray",
+    "selectedColor": "white",
+    "backgroundColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "pages/img/index_none.png",
+        "selectedIconPath": "pages/img/index_select.png"
+      },
+      {
+        "pagePath": "pages/gasoline/gasoline",
+        "text": "加油",
+        "iconPath": "pages/img/add_none.png",
+        "selectedIconPath": "pages/img/add_select.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "pages/img/mine_none.png",
+        "selectedIconPath": "pages/img/mine_select.png"
+      }
+    ]
+  }
+  
+}

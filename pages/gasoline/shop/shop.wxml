@@ -1,0 +1,32 @@
+<!--shop.wxml-->
+<view class="container">
+  <view>
+    <block>
+      <image src="../../img/mine_back.png" background-size="cover" class='backgourd-img'></image>
+    </block>
+  </view>
+  <view class='station-content'>
+    <block>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{pic_url}}" ></image>
+      <text class="station-name">{{station_name}}</text>
+      <text class="station-address">{{address}}</text>
+      <radio-group class="radio-group" bindchange="radioChange">
+        <view class='pay-radio-view'>
+          <label class="label-radio">
+          现金账户<text class='account' >{{cash_account}}</text>
+          </label>
+          <radio class="weui-icon-radio" checked='true'/>
+        </view>
+        <view class='pay-radio-view'>
+          <label class="label-radio">
+          白金账户<text class='account'>{{baitiao_account}}</text>
+          </label>
+          <radio class="weui-icon-radio" checked='true'/>
+        </view>
+      </radio-group>
+    </block>
+  </view>
+  <view>
+    <button class='surebtn' bindtap="startCharging">确定</button>
+  </view>
+</view>

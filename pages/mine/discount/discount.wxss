@@ -1,0 +1,5 @@
+.empty
+{
+  margin-top: 300rpx;
+  text-align: center;
+}

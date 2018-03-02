@@ -1,0 +1,21 @@
+.iphone
+{
+  background: white;
+  margin-top: 30rpx;
+  padding-left: 20rpx;
+  height: 50rpx;
+}
+.surebtn
+{
+  
+  background: #1677cb;
+  color: white;
+  margin-left: 30rpx;
+  margin-top: 40rpx;
+  margin-right: 30rpx;
+}
+.empty
+{
+  margin-top: 300rpx;
+  text-align: center;
+}

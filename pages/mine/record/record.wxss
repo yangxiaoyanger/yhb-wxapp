@@ -1,0 +1,50 @@
+/**index.wxss**/
+.contentView
+{
+  position: relative;
+  margin-top: 33rpx;
+  background-color: white;
+  height: 150rpx;
+}
+.img
+{
+  width: 32rpx;
+  height: 32rpx;
+  margin-top: 40rpx;
+  margin-left: 40rpx;
+}
+.title
+{
+  position: absolute;
+  left: 110rpx;
+  top: 15rpx;
+  font-size: 35rpx;
+}
+.subtitle
+{
+  position: absolute;
+  left: 110rpx;
+  top: 60rpx;
+  color: #888888;
+  font-size: 28rpx;
+  width: 350rpx;
+   overflow:hidden; 
+    text-overflow:ellipsis;
+    white-space:nowrap;  
+
+}
+.endtitle
+{
+  position: absolute;
+  left: 110rpx;
+  top: 100rpx;
+  color: #888888;
+  font-size: 28rpx;
+}
+.righttitle
+{
+  float: right;
+  height: 150rpx;
+  line-height: 150rpx;
+  margin-right: 40rpx;
+}

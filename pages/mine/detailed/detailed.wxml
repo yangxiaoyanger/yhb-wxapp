@@ -1,0 +1,32 @@
+<view class="mainView">
+
+    <view class='topView'>
+    
+        <image src='../../img/balance.png' class='imgaccount'></image>
+        <view class='titleLab'>
+        账户余额
+        </view>
+        <view class='money'>
+        {{cash_account}}
+        </view>
+        <button  class='btn'   bindtap="push"> 充值</button>
+    
+    
+    </view>
+
+      <view class='contentView'  wx:for="{{charing_list}}"   wx:fo  r-item="item" wx:key="*this" data-index="{{index}}">
+    <image class='img' src='../../img/wx_pay.png'></image>
+    <text class='title'>微信冲值</text>
+
+    <text class='endtitle'>{{item.recharge_money}}</text>
+    <text class='righttitle'>{{item.recharge_time}}</text>
+    </view>
+
+
+    <view wx:if="{{charing_list.lenght <= 0}}" class='empty'> 
+
+    
+        暂无数据
+     </view> 
+
+</view>

@@ -1,0 +1,13 @@
+<view class='mainView'>
+   <view class='loginView'>
+   
+    <input  class='iphone'  placeholder="充值金额(元):" bindinput ="num" />
+
+
+   </view>
+
+   <button class='surebtn'  bindtap="push">
+        立即充值
+    </button>
+
+   </view>

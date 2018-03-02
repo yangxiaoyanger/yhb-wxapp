@@ -1,0 +1,56 @@
+.backgourd-img {
+  width: 100%;
+  height: 180px;
+}
+.station-content {
+  margin-top: -100rpx;
+  text-align: center;
+  background-color: #fff;
+}
+.userinfo-avatar {
+  width: 200rpx;
+  height: 200rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.station-name {
+  display:block;
+  font-size:1rem;
+}
+.station-address {
+  display:block;
+  font-size:0.5rem;
+  color:#aaa;
+}
+.radio-group {
+  border-top: #aaa .02rem solid;
+  margin: 20rpx 0;
+}
+.pay-radio-view {
+  padding: 20rpx 20rpx;
+  border-bottom: #aaa .02rem solid;
+  height: 50rpx;
+}
+.label-radio {
+  float: left;
+  font-size: 1rem;
+}
+.account {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-left: 20rpx;
+}
+.weui-icon-radio {
+  float: right;
+}
+
+
+.surebtn
+{
+  background: #1677cb;
+  color: white;
+  margin-left: 30rpx;
+  margin-top: 40rpx;
+  margin-right: 30rpx;
+}

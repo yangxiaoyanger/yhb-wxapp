@@ -1,0 +1,86 @@
+.topView
+{
+  height: 190rpx;
+  background: white;
+  margin-top: 20rpx;
+}
+.titleLab
+{
+  /* float: left; */
+  margin-left: 100rpx;
+  padding-top: 30rpx;
+
+}
+.money
+{
+   margin-left: 100rpx;
+   padding-top: 30rpx;
+   font-size: 50rpx;
+
+   width: 130rpx;
+
+}
+.btn
+{
+  float: right;
+  width: 200rpx;
+  height: 60rpx;
+  background: #1677cb;
+  color: white;
+  margin-top: -70rpx;
+  line-height: 60rpx;
+  margin-right: 20rpx;
+   /* padding-top: 30rpx; */
+}
+.contentView
+{
+  position: relative;
+  margin-top: 33rpx;
+  background-color: white;
+  height: 150rpx;
+}
+.img
+{
+  width: 30rpx;
+  height: 26rpx;
+
+  margin-top: 45rpx;
+  margin-left: 60rpx;
+}
+.title
+{
+  position: absolute;
+  left: 130rpx;
+  top: 15rpx;
+  font-size: 35rpx;
+}
+
+.endtitle
+{
+  position: absolute;
+  left: 130rpx;
+  top: 80rpx;
+  color: #888888;
+  font-size: 28rpx;
+}
+.righttitle
+{
+  float: right;
+  height: 150rpx;
+  line-height: 150rpx;
+  margin-right: 40rpx;
+}
+
+.empty
+{
+  margin-top: 300rpx;
+  text-align: center;
+}
+.imgaccount
+{
+  width: 20rpx;
+  height: 20rpx;
+  float: left;
+   margin-left: 70rpx;
+  padding-top: 40rpx;
+}

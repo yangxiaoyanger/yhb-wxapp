@@ -1,0 +1,6 @@
+<view wx:if='{{list.lenght > 0}}'>
+</view>
+<view wx:else class='empty'>
+    
+        暂无数据
+     </view>
