@@ -14,30 +14,25 @@
 </view>
 
 
-  <view class='midde'> 
-  <view class='left' bindtap='xianjin'>
-  <view class='text1'>
-     {{cash_account}}
-   </view>
-   <view class='text3'>
-    现金账户
-   </view>
-  
+<view class='midde'> 
+   <view class='left' bindtap='xianjin'>
+    <view class='text1'>
+      {{cash_account}}
+      </view>
+      <view class='text3'>
+        现金账户
+    </view>
   </view>
   <view class='right'>
-  
-  <view class='text2'>
-    0.00
-   </view>
-<view class='text4' >
-    白金账户
-   </view>
+    <view class='text2'>
+      0.00
+    </view>
+    <view class='text4' >
+      白金账户
+    </view>
+  </view> 
 
-  </view>
- 
-
-  
-  </view>
+</view>
 
 
 

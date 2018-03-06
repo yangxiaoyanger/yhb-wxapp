@@ -10,39 +10,45 @@ Page({
     list:[]
   },
 
-  push:function()
-  {
-    console.log("money"+this.data.money);
+  recharge: function() {
+    var that = this;
+    var money = that.data.money;
+    console.log("money  "+this.data.money);
+    var cookies = wx.getStorageSync("cookies");
+    wx.request({
+      url: config.recharge,
+      method: "POST",
+      data: { pay_type: 'WeiXinPay', fee: money },
+      header: {
+        'content-type': 'application/json',
+        'Cookie': cookies
+      },
+      complete: function (re) {
+        if (re.data.code == "S200") {
+          console.log("config.recharge  " + re.data.trade_info);
+          wx.requestPayment({
+            'timeStamp': re.data.trade_info.timeStamp,
+            'nonceStr': re.data.trade_info.nonceStr,
+            'package': re.data.trade_info.package,
+            'signType': 'MD5',
+            'paySign': re.data.trade_info.paySign,
+            'success': function (res) {
+              wx.redirectTo({
+                url: '/pages/mine/detailed/detailed'
+              })
+            },
+            'fail': function (res) {
+              console.log("pay fail")
+            }
+          })
 
-    var that = this
-    wx.getStorage({
-      key: 'cookies',
-      success: function (res) {
-        if (res == null) {
+        } else if (re.data.code == 'E102') {
           wx.redirectTo({
             url: '/pages/login/login'
-          })
+          });
         }
-        else {
-          console.log(res);
-          that.getData(res.data,that.data.money)
-        }
-
-      },
-    })
-
-
-    // 检测是否存在用户信息
-    if (app.globalData.userInfo != null) {
-      that.setData({
-        userInfo: app.globalData.userInfo
-      })
-    } else {
-      app.getUserInfo()
-    }
-    typeof cb == 'function' && cb()
-
-
+      }
+    });
   }
   ,
   num: function (e) {
@@ -55,46 +61,6 @@ Page({
    */
   onLoad: function (cb) {
     
-  },
-  getData: function (res,money) {
-    var that = this
-    wx.requestPayment({
-      'timeStamp': '',
-      'nonceStr': '',
-      'package': '',
-      'signType': 'MD5',
-      'paySign': '',
-      'success': function (res) {
-        console.log(res)
-      },
-      'fail': function (res) {
-      }
-    })
-    // wx.request({
-    //   url: config.recharge,
-    //   method: "POST",
-    //   data: { pay_type: 'WeiXinPay', fee:money },
-    //   header: {
-    //     'content-type': 'application/json',
-    //     'Cookie': res,
-
-    //   },
-    //   complete: function (re) {
-
-    //     if (re.data.code == "S200") {
-    //       console.log("1111" + re.data);
-          
-          
-    //     } else if (re.data.code == 'E102') {
-    //       wx.redirectTo({
-    //         url: '/pages/login/login'
-    //       })
-    //     }
-    //   }
-    // })
-
-
-
   },
 
   /**

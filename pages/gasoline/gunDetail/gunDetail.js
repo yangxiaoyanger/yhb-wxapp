@@ -1,3 +1,4 @@
+// pages/gasoline/gunDetail/gunDetail.js
 var app = getApp();
 var config = require('../../common/config')
 Page({
@@ -11,13 +12,13 @@ Page({
     cash_account: 0,//账户余额
     baitiao_account: 0,//白条账户余额
     status: 0, // 状态，0空闲，1正在使用，2冻结，3故障
-    pic_url:'',
+    pic_url: '',
     gun_id: ''
   },
 
-  showStatusModel: function() {
+  showStatusModel: function () {
     let statusString;
-    switch(status) {
+    switch (status) {
       case 1:
         statusString = '正在使用';
         break;
@@ -42,7 +43,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    that.setData({ gun_id: options.gun_id});
+    that.setData({ gun_id: options.gun_id });
     var cookies = wx.getStorageSync('cookies');
     wx.request({
       url: config.load_gun_detail + '&gun_id=' + options.gun_id,
@@ -70,44 +71,12 @@ Page({
     console.log('radio发生change事件，携带value值为：', e.detail.value)
   },
 
-  startCharging: function() {
-    var that = this;
-    console.log('gun_id ' + that.data);
-    var cookies = wx.getStorageSync('cookies');
-    wx.request({
-      url: config.startCharging + '&gun_id=' + that.data.gun_id + '&charging_amount=' + that.data.cash_account,
-      method: 'GET',
-      header: {
-        'content-type': 'application/json',
-        'Cookie': cookies,
-      },
-      complete: function (res) {
-        if (res.data.code == "S200") {
-          console.log('startCharging:  ' + res.data + '   cookirs: ' + cookies);
-          var interval = setInterval(function () {
-            wx.request({
-              url: config.loadOrderStatus + '&order_id=' + res.data.order_id,
-              method: 'GET',
-              header: {
-                'content-type': 'application/json',
-                'Cookie': cookies,
-              },
-              complete: function (res) {
-                if (res.data.code == "S200") {
-                  if (res.data.status == 2) {
-                    clearInterval(interval);
-                  }
-                }
-              }
-            });
-          }, 5000);
-        }
-      }
-    });
-
-    
-    
+  beforeStartCharging: function () {
+    wx.navigateTo({
+      url: '../startOil/startOil?gun_id=287454022'
+    })
   },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

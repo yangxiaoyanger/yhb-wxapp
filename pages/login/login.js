@@ -27,7 +27,7 @@ Page({
     wx.request({
       url: config.getCode,
       method: "POST",
-      data: { phone_num: this.data.userName},  
+      data: { phone_num: this.data.userName.trim()},  
       complete: function (res) {
         
         if (res == null || res.data == null) {
@@ -64,40 +64,50 @@ Page({
   },
   push:function(e)
   {
+    var that = this;
     var user_id = this.data.userName;
     var code = this.data.userPwd;
-    var js_code = app.globalData.code;
-    wx.request({
-      url: config.login,
-      method: "POST",
-      data: { user_id: user_id, code: code, js_code: js_code },
-      header: {
-        'content-type': 'application/json' ,
-        'Set-Cookie': js_code
-        
-      },
-      complete: function (res) {
-        if (res.data.code == "S200") {
-          var cookies = res.header["Set-Cookie"];
-          wx.setStorageSync('cookies', cookies);
-          wx.switchTab({
-            url: '../index/index'
-          });
-        }
-        else
-        {
-          // res.data.error_msg
-          wx.showToast({
-            title: '失败',
-            icon: 'fail',
-            duration: 2000,
-            mask: true
+    wx.login({
+      success: function (re) {
+        if (re.code) {
+          var js_code = re.code;
+          app.globalData.code = js_code;
+          wx.request({
+            url: config.login,
+            method: "POST",
+            data: { user_id: user_id, code: code, js_code: js_code },
+            header: {
+              'content-type': 'application/json' ,
+              'Set-Cookie': js_code
+              
+            },
+            complete: function (res) {
+              if (res.data.code == "S200") {
+                var cookies = res.header["Set-Cookie"];
+                wx.setStorageSync('cookies', cookies);
+                wx.getUserInfo({
+                  success: function (res) {
+                    app.globalData.userInfo = res.userInfo;
+                  }
+                })
+                wx.switchTab({
+                  url: '../index/index'
+                });
+              }
+              else
+              {
+                wx.showToast({
+                  title: '失败',
+                  icon: 'fail',
+                  duration: 2000,
+                  mask: true
+                })
+              }
+            }
           })
         }
-
-        
       }
-    })
+    });
   },
   /**
    * 生命周期函数--监听页面加载

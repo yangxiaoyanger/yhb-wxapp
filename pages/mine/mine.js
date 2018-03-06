@@ -7,68 +7,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    cash_account:""
+    cash_account: "",
+    baitiao_account: "",
+    userInfo: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (cb) {
-    var that = this
-    wx.getStorage({
-      key: 'cookies',
-      success: function (res) {
-        if (res == null) {
-          wx.redirectTo({
-            url: '/pages/login/login'
-          })
-        }
-        else{
-          that.getData(res.data)
-        }
-
-      },
-    })
-
-
-    // 检测是否存在用户信息
-    if (app.globalData.userInfo != null) {
-      that.setData({
-        userInfo: app.globalData.userInfo
-      })
-    } else {
-      app.getUserInfo()
-    }
-    typeof cb == 'function' && cb()
+    
   },
-  getData:function(res)
-  {
-    var that = this
-    wx.request({
-      url: config.query,
-      method: "GET",
-      data: { page_number:'1' },
-      header: {
-        'content-type': 'application/json',
-        'Cookie': res,
-
-      },
-      complete: function (re) {
-
-        if (re.data.code == "S200") {
-          console.log(re.data);
-          that.setData({
-            cash_account: re.data.cash_account
-          })
-        }else if(re.data.code == 'E102')
-        {
-          wx.redirectTo({
-            url: '/pages/login/login'
-          })
-        }
-      }
-    })
-  },
+  
 
 
   /**
@@ -82,7 +32,32 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    console.log('onshow');
+    var that = this;
+    var cookies = wx.getStorageSync('cookies');
+    that.setData({
+      userInfo: app.globalData.userInfo
+    });
+    wx.request({
+      url: config.getuserinfo,
+      method: "GET",
+      header: {
+        'content-type': 'application/json',
+        'Cookie': cookies
+      },
+      complete: function (re) {
+        if (re.data.code == "S200") {
+          that.setData({
+            cash_account: re.data.cash_account,
+            baitiao_account: re.data.baitiao_account
+          })
+        } else if (re.data.code == 'E102') {
+          wx.redirectTo({
+            url: '/pages/login/login'
+          })
+        }
+      }
+    })
   },
 
   /**

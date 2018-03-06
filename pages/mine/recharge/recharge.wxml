@@ -6,7 +6,7 @@
 
    </view>
 
-   <button class='surebtn'  bindtap="push">
+   <button class='surebtn'  bindtap="recharge">
         立即充值
     </button>
 

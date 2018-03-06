@@ -1,0 +1,38 @@
+<!--pages/gasoline/startOil/startOil.wxml-->
+<view class="container">
+  <view>
+    <block>
+      <image src="../../img/mine_back.png" background-size="cover" class='backgourd-img'></image>
+    </block>
+  </view>
+  <view class='station-content'>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{pic_url}}" ></image>
+      <view class="weui-media-box__title weui-media-box__title_in-text">{{station_name}}</view>
+      <view class="weui-media-box__desc">{{address}}</view>
+  </view>
+
+  <view class="weui-media-box weui-media-box_text" >
+    <view class="weui-media-box__title weui-media-box__title_in-text">现金账户： {{cash_account}}</view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入文本" bindinput="setAccount"/>
+    </view>
+    <view class="weui-media-box__info">
+        <view class="weui-media-box__info__meta">
+          说明：输入加油金额需小于账户余额，输入为空默认加满
+        </view>
+    </view>
+  </view>
+  <view>
+    <button class='surebtn' bindtap="startCharging">开始加油</button>
+  </view>
+  <view class='weui-article'>
+    <view class="weui-article__section">
+      <view class="weui-article__h3">操作流程及提示：</view>
+      <view class="weui-article__p">
+          <p>1. 点击确认加油, 请确认油箱后开始加油</p>
+          <p>2. 加油的开始和结束都是在油机上完成</p>
+          <p>3. 加油过程中如遇突发故障, 请及时联系我们, 我们将竭诚为您服务</p>
+      </view>
+    </view>
+  </view>
+</view>

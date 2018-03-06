@@ -175,17 +175,20 @@
 .left
 {
    float: left; 
-    width: 50%;
+    width: 49.5%;
     padding-top: 20rpx;
-    text-align: center;  
+    text-align: center; 
+    border-right: 0.5rpx solid #ccc;  
+    padding-bottom: 20rpx;
   
 }
 .right
 {
    float: right; 
-  width: 50%;
+  width: 49.5%;
    padding-top: 20rpx;
-    text-align: center;  
+    text-align: center;
+    padding-bottom: 20rpx;  
 
 
 }

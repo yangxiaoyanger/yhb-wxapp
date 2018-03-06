@@ -13,13 +13,13 @@
       <radio-group class="radio-group" bindchange="radioChange">
         <view class='pay-radio-view'>
           <label class="label-radio">
-          现金账户<text class='account' >{{cash_account}}</text>
+          现金账户<text class='account'>{{cash_account}}</text>
           </label>
           <radio class="weui-icon-radio" checked='true'/>
         </view>
         <view class='pay-radio-view'>
           <label class="label-radio">
-          白金账户<text class='account'>{{baitiao_account}}</text>
+          白条账户<text class='account'>{{baitiao_account}}</text>
           </label>
           <radio class="weui-icon-radio" checked='true'/>
         </view>

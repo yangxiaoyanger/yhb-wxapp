@@ -62,7 +62,6 @@ Page({
   wx.getStorage({
     key: 'cookies',
     success: function(res) {
-      console.log('index:cookies ' + res, 888)
     if(res==null)
     {
       wx.redirectTo({

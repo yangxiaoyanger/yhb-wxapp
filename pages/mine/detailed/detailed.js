@@ -45,7 +45,7 @@ Page({
   getData: function (res) {
     var that = this
     wx.request({
-      url: config.query,
+      url: config.queryForChargingRecord,
       method: "GET",
       data: { page_number: '1' },
       header: {
@@ -93,7 +93,7 @@ Page({
   },
   push:function()
   {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../recharge/recharge',
     })
   },

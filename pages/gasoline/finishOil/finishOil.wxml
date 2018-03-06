@@ -1,0 +1,38 @@
+<!--pages/gasoline/finishOil/finishOil.wxml-->
+<view class='page'>
+  <view class="page__hd">
+    <view class="page__title"><icon class="weui-icon-checkbox_circle" type="success" size="30"></icon>加油结束</view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-form-preview">
+      <view class="weui-form-preview__hd">
+          <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">付款金额</view>
+              <view class="weui-form-preview__value_in-hd">¥2400.00</view>
+          </view>
+      </view>
+      <view class="weui-form-preview__bd">
+          <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">总计加油数</view>
+              <view class="weui-form-preview__value">¥2400.00</view>
+          </view>
+          <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">账户余额</view>
+              <view class="weui-form-preview__value">¥2400.00</view>
+          </view>
+          <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">加油时间</view>
+              <view class="weui-form-preview__value">¥2400.00</view>
+          </view>
+      </view>
+    </view>
+
+    
+      <view>
+        <button class='surebtn' bindtap="finished">确定</button>
+      </view>
+  </view>
+
+
+
+</view>
