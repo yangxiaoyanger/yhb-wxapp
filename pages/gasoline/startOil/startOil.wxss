@@ -24,7 +24,16 @@
 .weui-input {
   font-size: 15px;
 }
-
+.info-xl {
+  margin-top: 0;
+  padding-bottom: 0;
+}
+.input-xl {
+  margin-top: -10px;
+}
+.box_text_center {
+  text-align: center;
+}
 
 
 .surebtn

@@ -11,19 +11,26 @@
       <view class="weui-media-box__desc">{{address}}</view>
   </view>
 
-  <view class="weui-media-box weui-media-box_text" >
-    <view class="weui-media-box__title weui-media-box__title_in-text">现金账户： {{cash_account}}</view>
-    <view class="weui-cell__bd">
-        <input class="weui-input" placeholder="请输入文本" bindinput="setAccount"/>
+  <view class="weui-media-box weui-media-box_text" wx:if="{{oilStatus}}" >
+    <view class="weui-media-box__title weui-media-box__title_in-text">现金账户： {{cash_account}}     </view>
+    <view class="weui-cell__bd input-xl">
+        <input class="weui-input" type="number" placeholder="请输入金额" bindinput="setAccount"/>
     </view>
-    <view class="weui-media-box__info">
+    <view class="weui-media-box__info info-xl">
         <view class="weui-media-box__info__meta">
-          说明：输入加油金额需小于账户余额，输入为空默认加满
+          <icon type="info" size="15" color="red"></icon>  说明：输入加油金额需小于账户余额，输入为空默认加满
         </view>
     </view>
   </view>
+
+  <view class="weui-media-box weui-media-box_text box_text_center" wx:else>
+    <view class="weui-media-box__title weui-media-box__title_in-text">现金账户： {{cash_account}}</view>
+    <view class="weui-cell__bd">{{order_account}}</view>
+  </view>
+
   <view>
-    <button class='surebtn' bindtap="startCharging">开始加油</button>
+    <button class='surebtn' wx:if="{{oilStatus}}" bindtap="startCharging">开始加油</button>
+    <button class='surebtn' wx:else bindtap="startCharging"><view class="weui-loading"></view>正在加油</button>
   </view>
   <view class='weui-article'>
     <view class="weui-article__section">

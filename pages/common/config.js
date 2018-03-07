@@ -11,7 +11,8 @@ module.exports = {
   complain: url +'/user/complain',
   load_gun_detail: url + '/charging?qt=load_gun_detail',
   startCharging: url + '/charging?qt=start',
-  loadOrderStatus: url + '/charging?qt=load_order_status'
+  loadOrderStatus: url + '/charging?qt=load_order_status',
+  endCharging: url + '/charging?qt=end'
   
 
 }

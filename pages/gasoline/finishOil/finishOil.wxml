@@ -1,28 +1,35 @@
 <!--pages/gasoline/finishOil/finishOil.wxml-->
 <view class='page'>
   <view class="page__hd">
-    <view class="page__title"><icon class="weui-icon-checkbox_circle" type="success" size="30"></icon>加油结束</view>
+    <view class="weui-msg">
+      <view class="weui-msg__icon-area">
+          <icon type="success" size="93"></icon>
+      </view>
+      <view class="weui-msg__text-area">
+          <view class="weui-msg__title">加油成功</view>
+      </view>
+    </view>
   </view>
   <view class="page__bd">
     <view class="weui-form-preview">
       <view class="weui-form-preview__hd">
           <view class="weui-form-preview__item">
               <view class="weui-form-preview__label">付款金额</view>
-              <view class="weui-form-preview__value_in-hd">¥2400.00</view>
+              <view class="weui-form-preview__value_in-hd">{{total_cost}}}}</view>
           </view>
       </view>
       <view class="weui-form-preview__bd">
           <view class="weui-form-preview__item">
               <view class="weui-form-preview__label">总计加油数</view>
-              <view class="weui-form-preview__value">¥2400.00</view>
+              <view class="weui-form-preview__value">{{charging_vol}}</view>
           </view>
           <view class="weui-form-preview__item">
               <view class="weui-form-preview__label">账户余额</view>
-              <view class="weui-form-preview__value">¥2400.00</view>
+              <view class="weui-form-preview__value">{{cash_account}}</view>
           </view>
           <view class="weui-form-preview__item">
               <view class="weui-form-preview__label">加油时间</view>
-              <view class="weui-form-preview__value">¥2400.00</view>
+              <view class="weui-form-preview__value">{{charging_time}}</view>
           </view>
       </view>
     </view>

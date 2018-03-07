@@ -13,7 +13,8 @@ Page({
     status: 0, // 状态，0空闲，1正在使用，2冻结，3故障
     pic_url: '',
     gun_id: '',
-    order_account: 0
+    order_account: 0,
+    oilStatus: true
   },
 
   /**
@@ -45,9 +46,24 @@ Page({
     typeof cb == 'function' && cb()
   },
   setAccount: function(e) {
-    this.setData({
-      order_account: e.detail.value
-    })
+    var that = this;
+    if (e.detail.value > that.data.cash_account) {
+      wx.showToast({
+        title: '超出余额',
+        icon: 'none',
+        duration: 3000,
+        complete: function () {
+          console.log('7777')
+          that.setData({
+            order_account: ''
+          })
+        }
+      });
+    } else {
+      that.setData({
+        order_account: e.detail.value
+      })
+    }
   },
   startCharging: function () {
     wx.navigateTo({
@@ -68,6 +84,7 @@ Page({
   //     },
   //     complete: function (res) {
   //       if (res.data.code == "S200") {
+  //         that.oilStatus = false;
   //         console.log('startCharging:  ' + res.data + '   cookirs: ' + cookies);
   //         var interval = setInterval(function () {
   //           wx.request({

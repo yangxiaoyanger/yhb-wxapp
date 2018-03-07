@@ -13,7 +13,11 @@ Page({
     baitiao_account: 0,//白条账户余额
     status: 0, // 状态，0空闲，1正在使用，2冻结，3故障
     pic_url: '',
-    gun_id: ''
+    gun_id: '',
+    radioItems: [
+      { name: '现金账户', value: 'cash_account', checked: true},
+      { name: '白金账户', value: 'baitiao_account'}
+    ],
   },
 
   showStatusModel: function () {
@@ -68,7 +72,15 @@ Page({
   },
 
   radioChange: function (e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value)
+    console.log('radio发生change事件，携带value值为：', e.detail.value);
+    var radioItems = this.data.radioItems;
+    for (var i = 0, len = radioItems.length; i < len; ++i){
+      radioItems[i].checked = radioItems[i].value == e.detail.value;
+    }
+
+    this.setData({
+      radioItems: radioItems
+    });
   },
 
   beforeStartCharging: function () {
