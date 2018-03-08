@@ -13,7 +13,8 @@ Page({
     status: 0, // 状态，0空闲，1正在使用，2冻结，3故障
     pic_url: '',
     gun_id: '',
-    order_account: 0,
+    price: 0,
+    order_account: '',
     oilStatus: true
   },
 
@@ -38,7 +39,8 @@ Page({
             address: res.data.address,
             cash_account: res.data.cash_ccount,
             baitiao_account: res.data.baitiao_ccount,
-            pic_url: res.data.pic_url
+            pic_url: res.data.pic_url,
+            price: res.price
           })
         }
       }
@@ -47,66 +49,86 @@ Page({
   },
   setAccount: function(e) {
     var that = this;
-    if (e.detail.value > that.data.cash_account) {
-      wx.showToast({
-        title: '超出余额',
-        icon: 'none',
-        duration: 3000,
-        complete: function () {
-          console.log('7777')
-          that.setData({
-            order_account: ''
-          })
+    console.log(that.data.cash_account, e.detail.value)
+    if (Number(e.detail.value) > Number(that.data.cash_account)) {
+      wx.showModal({
+        content: '所填金额超出您的余额，请重新输入',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            that.setData({
+              order_account: ''
+            })
+          }
         }
       });
-    } else {
+    } else if (Number(e.detail.value) < Number(that.data.price)) {
+      wx.showModal({
+        content: '所填金额至少应该大于油品价格，请重新输入              DEQ         W2ZXX',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            that.setData({
+              order_account: ''
+            })
+          }
+        }
+      });
+    }
+    else {
       that.setData({
         order_account: e.detail.value
       })
     }
   },
-  startCharging: function () {
-    wx.navigateTo({
-      url: '../finishOil/finishOil'
-    })
-    
-  },
   // startCharging: function () {
-  //   var that = this;
-  //   console.log('gun_id ' + that.data);
-  //   var cookies = wx.getStorageSync('cookies');
-  //   wx.request({
-  //     url: config.startCharging + '&gun_id=' + that.data.gun_id + '&charging_amount=' + that.data.order_account,
-  //     method: 'GET',
-  //     header: {
-  //       'content-type': 'application/json',
-  //       'Cookie': cookies,
-  //     },
-  //     complete: function (res) {
-  //       if (res.data.code == "S200") {
-  //         that.oilStatus = false;
-  //         console.log('startCharging:  ' + res.data + '   cookirs: ' + cookies);
-  //         var interval = setInterval(function () {
-  //           wx.request({
-  //             url: config.loadOrderStatus + '&order_id=' + res.data.order_id,
-  //             method: 'GET',
-  //             header: {
-  //               'content-type': 'application/json',
-  //               'Cookie': cookies,
-  //             },
-  //             complete: function (res) {
-  //               if (res.data.code == "S200") {
-  //                 if (res.data.status == 2) {
-  //                   clearInterval(interval);
-  //                 }
-  //               }
-  //             }
-  //           });
-  //         }, 5000);
-  //       }
-  //     }
-  //   });
+  //   wx.navigateTo({
+  //     url: '../finishOil/finishOil'
+  //   })
+    
   // },
+  startCharging: function () {
+    var that = this;
+    console.log('gun_id ' + that.data);
+    var cookies = wx.getStorageSync('cookies');
+    wx.request({
+      url: config.startCharging + '&gun_id=' + that.data.gun_id + '&charging_amount=' + that.data.order_account,
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+        'Cookie': cookies,
+      },
+      complete: function (res) {
+        if (res.data.code == "S200") {
+          that.setData({
+            oilStatus: false
+          })
+          console.log('startCharging:  ' + res.data + '   cookirs: ' + cookies);
+          let order_id = res.data.order_id;
+          var interval = setInterval(function () {
+            wx.request({
+              url: config.loadOrderStatus + '&order_id=' + order_id,
+              method: 'GET',
+              header: {
+                'content-type': 'application/json',
+                'Cookie': cookies,
+              },
+              complete: function (res) {
+                if (res.data.code == "S200") {
+                  if (res.data.status == 2) {
+                    clearInterval(interval);
+                        wx.navigateTo({
+                          url: '../finishOil/finishOil?order_id=' + order_id
+                        });
+                  }
+                }
+              }
+            });
+          }, 5000);
+        }
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

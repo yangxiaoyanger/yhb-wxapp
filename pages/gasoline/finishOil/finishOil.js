@@ -21,7 +21,7 @@ Page({
     that.setData({ order_id: options.order_id });
     var cookies = wx.getStorageSync('cookies');
     wx.request({
-      url: config.endCharging + '&order_id=' + options.order_id,
+      url: config.loadOrderStatus + '&order_id=' + options.order_id,
       method: 'GET',
       header: {
         'content-type': 'application/json',

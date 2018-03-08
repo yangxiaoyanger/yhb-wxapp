@@ -14,7 +14,7 @@
   <view class="weui-media-box weui-media-box_text" wx:if="{{oilStatus}}" >
     <view class="weui-media-box__title weui-media-box__title_in-text">现金账户： {{cash_account}}     </view>
     <view class="weui-cell__bd input-xl">
-        <input class="weui-input" type="number" placeholder="请输入金额" bindinput="setAccount"/>
+        <input class="weui-input" type="number" placeholder="请输入金额" bindinput="setAccount" value="{{order_account}}"/>
     </view>
     <view class="weui-media-box__info info-xl">
         <view class="weui-media-box__info__meta">
@@ -30,7 +30,7 @@
 
   <view>
     <button class='surebtn' wx:if="{{oilStatus}}" bindtap="startCharging">开始加油</button>
-    <button class='surebtn' wx:else bindtap="startCharging"><view class="weui-loading"></view>正在加油</button>
+    <button class='surebtn' wx:else bindtap="startCharging" disabled='true'><view class="weui-loading"></view>正在加油</button>
   </view>
   <view class='weui-article'>
     <view class="weui-article__section">

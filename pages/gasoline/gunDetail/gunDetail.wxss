@@ -19,6 +19,11 @@
 .weui-cells_after-title {
   text-align: left;
 }
+.w-account {
+  color: #666;
+  margin-left: 20rpx;
+  font-size: 25rpx; 
+}
 
 .surebtn
 {

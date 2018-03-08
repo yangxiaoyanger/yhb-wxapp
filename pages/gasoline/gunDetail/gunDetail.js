@@ -14,10 +14,8 @@ Page({
     status: 0, // 状态，0空闲，1正在使用，2冻结，3故障
     pic_url: '',
     gun_id: '',
-    radioItems: [
-      { name: '现金账户', value: 'cash_account', checked: true},
-      { name: '白金账户', value: 'baitiao_account'}
-    ],
+    radioItems: [],
+    
   },
 
   showStatusModel: function () {
@@ -63,7 +61,12 @@ Page({
             address: res.data.address,
             cash_account: res.data.cash_ccount,
             baitiao_account: res.data.baitiao_ccount,
-            pic_url: res.data.pic_url
+            pic_url: res.data.pic_url,
+            radioItems: [
+              { name: '现金账户', value: 'cash_account', detail: res.data.cash_ccount, checked: true },
+              { name: '白条账户', value: 'baitiao_account',
+                detail: res.data.baitiao_ccount + '(暂不可用)', disabled: true }
+            ],
           })
         }
       }
@@ -85,7 +88,7 @@ Page({
 
   beforeStartCharging: function () {
     wx.navigateTo({
-      url: '../startOil/startOil?gun_id=287454022'
+      url: '../startOil/startOil?gun_id=' + this.data.gun_id 
     })
   },
   

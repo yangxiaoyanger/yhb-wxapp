@@ -13,9 +13,11 @@
   <view class="weui-cells weui-cells_after-title">
     <radio-group bindchange="radioChange">
       <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
-          <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+          <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}" disabled='{{item.disabled}}'/>
 
-          <view class="weui-cell__bd">{{item.name}}</view>
+          <view class="weui-cell__bd">{{item.name}}
+          <span class="w-account">{{item.detail}}</span>
+          </view>
           <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
               <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
           </view>
