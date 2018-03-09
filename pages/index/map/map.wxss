@@ -1,18 +1,29 @@
 .mainView
 {
   background: white;
-  height: 150rpx;
-}
-.view1
-{
-  padding-top: 30rpx;
-  padding-left: 40rpx;
-   font-size: 35rpx;
 }
 
-.view2
-{
-  padding-top: 20rpx;
-  padding-left: 40rpx;
- 
+.distance{
+  font-size:13px;
+  float:right;
+  line-height: 27px;
+}
+
+.address {
+  width: 60%;
+  font-weight:400;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  word-wrap:break-word;
+  word-break:break-all;
+  display: inline-block;
+}
+
+.price {
+  margin-top: -12px;
+}
+
+.pull-right {
+  float: right;
 }

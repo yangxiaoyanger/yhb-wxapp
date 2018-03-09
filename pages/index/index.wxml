@@ -1,12 +1,20 @@
 <!--index.wxml-->
 <view class='mianView'>
 
-  <view class='contentView' bindtap='pushMap' wx:for="{{info_list}}"   wx:fo  r-item="item" wx:key="*this" data-index="{{index}}">
-  <image class='img' src='{{item.icon}}'></image>
-  <text class='title'>{{item.name}}</text>
-  <text class='subtitle'>{{item.address}}</text>
-  <text class='endtitle'>柴油价格{{item.price}}</text>
-  <text class='righttitle'>{{item.distance}}公里</text>
+  <view class='contentView' bindtap='pushMap' wx:for="{{info_list}}"   wx:for-item="item" wx:key="*this" data-index="{{index}}">
+  <div url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+      <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="{{item.icon}}" />
+      </view>
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title lineheight27">
+          <p class="word-break">{{item.name}}</p>
+          <span class="distance">{{item.distance}}公里</span>
+          </view>
+          <view class="weui-media-box__desc word-break">{{item.address}}</view>
+          <view class="weui-media-box__desc">柴油价格{{item.price}}</view>
+      </view>
+  </div>
   </view>
 
 </view>

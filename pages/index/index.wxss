@@ -4,48 +4,24 @@
   position: relative;
   margin-top: 33rpx;
   background-color: white;
-  height: 150rpx;
+  height: 180rpx;
 }
-.img
-{
-  width: 110rpx;
-  height: 110rpx;
-  background: gray;
-  margin-top: 20rpx;
-  margin-left: 40rpx;
-}
-.title
-{
-  position: absolute;
-  left: 180rpx;
-  top: 15rpx;
-  font-size: 35rpx;
-}
-.subtitle
-{
-  position: absolute;
-  left: 180rpx;
-  top: 60rpx;
-  color: #888888;
-  font-size: 28rpx;
+.word-break {
   width: 350rpx;
-   overflow:hidden; 
-    text-overflow:ellipsis;
-    white-space:nowrap;  
-
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  white-space:nowrap;  
+  word-wrap:break-word;
+  word-break:break-all;
+  display: inline-block;
 }
-.endtitle
-{
-  position: absolute;
-  left: 180rpx;
-  top: 100rpx;
-  color: #888888;
-  font-size: 28rpx;
+.lineheight27 {
+  line-height: 27px;
+  height: 27px;
 }
-.righttitle
-{
+.distance {
   float: right;
-  height: 150rpx;
-  line-height: 150rpx;
-  margin-right: 40rpx;
+  font-size: 13px;
+  color: #999;
+
 }

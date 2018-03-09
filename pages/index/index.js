@@ -28,17 +28,13 @@ Page({
 
           },
           complete: function (res) {
-
             if (res.data.code == "S200") {
               that.setData({
                 info_list: res.data.info_list
               })
             }
           }
-
-
         })
-
       },
     })
    
@@ -56,23 +52,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
-  
-
-  wx.getStorage({
-    key: 'cookies',
-    success: function(res) {
-    if(res==null)
-    {
-      wx.redirectTo({
-        url: '/pages/login/login'
-      })
-    }
-
-    },
-  })
-
-    
   },
 
   /**
