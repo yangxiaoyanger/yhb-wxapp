@@ -11,12 +11,19 @@ Page({
     time: '获取验证码', //倒计时 
     currentTime: 60,
     userName: '',
-    userPwd: ""
+    userPwd: "",
+    disabled: true
   },
   userNameInput: function (e) {
     this.setData({
-      userName: e.detail.value
-    })
+      userName: e.detail.value,
+      disabled: false
+    });
+    if (this.data.userName == '') {
+      this.setData({
+        disabled: true
+      });
+    }
   },
   passWdInput: function (e) {
     this.setData({
