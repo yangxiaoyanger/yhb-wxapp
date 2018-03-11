@@ -6,6 +6,7 @@
     "pages/gasoline/shop/shop",
     "pages/gasoline/gunDetail/gunDetail",
     "pages/gasoline/startOil/startOil",
+    "pages/gasoline/oiling/oiling",
     "pages/gasoline/finishOil/finishOil",
     "pages/gasoline/finishOil/finishOil_fail",
     "pages/index/map/map",

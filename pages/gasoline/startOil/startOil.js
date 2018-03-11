@@ -14,8 +14,7 @@ Page({
     pic_url: '',
     gun_id: '',
     price: 0,
-    order_account: '',
-    oilStatus: true
+    charging_amount: ''
   },
 
   /**
@@ -40,7 +39,7 @@ Page({
             cash_account: res.data.cash_ccount,
             baitiao_account: res.data.baitiao_ccount,
             pic_url: res.data.pic_url,
-            price: res.price
+            price: res.data.price
           })
         }
       }
@@ -57,19 +56,19 @@ Page({
         success: function (res) {
           if (res.confirm) {
             that.setData({
-              order_account: ''
+              charging_amount: ''
             })
           }
         }
       });
     } else if (Number(e.detail.value) < Number(that.data.price)) {
       wx.showModal({
-        content: '所填金额至少应该大于油品价格，请重新输入              DEQ         W2ZXX',
+        content: '所填金额至少应该大于油品价格，请重新输入',
         showCancel: false,
         success: function (res) {
           if (res.confirm) {
             that.setData({
-              order_account: ''
+              charging_amount: ''
             })
           }
         }
@@ -77,7 +76,7 @@ Page({
     }
     else {
       that.setData({
-        order_account: e.detail.value
+        charging_amount: e.detail.value
       })
     }
   },
@@ -92,7 +91,7 @@ Page({
     console.log('gun_id ' + that.data);
     var cookies = wx.getStorageSync('cookies');
     wx.request({
-      url: config.startCharging + '&gun_id=' + that.data.gun_id + '&charging_amount=' + that.data.order_account,
+      url: config.startCharging + '&gun_id=' + that.data.gun_id + '&charging_amount=' + that.data.charging_amount,
       method: 'GET',
       header: {
         'content-type': 'application/json',
@@ -100,31 +99,12 @@ Page({
       },
       complete: function (res) {
         if (res.data.code == "S200") {
-          that.setData({
-            oilStatus: false
-          })
           console.log('startCharging:  ' + res.data + '   cookirs: ' + cookies);
           let order_id = res.data.order_id;
-          var interval = setInterval(function () {
-            wx.request({
-              url: config.loadOrderStatus + '&order_id=' + order_id,
-              method: 'GET',
-              header: {
-                'content-type': 'application/json',
-                'Cookie': cookies,
-              },
-              complete: function (res) {
-                if (res.data.code == "S200") {
-                  if (res.data.status == 2) {
-                    clearInterval(interval);
-                        wx.navigateTo({
-                          url: '../finishOil/finishOil?order_id=' + order_id
-                        });
-                  }
-                }
-              }
-            });
-          }, 5000);
+          wx.setStorageSync('order_id', order_id);
+          wx.redirectTo({
+            url: '../oiling/oiling?order_id=' + order_id
+          });
         }
       }
     });

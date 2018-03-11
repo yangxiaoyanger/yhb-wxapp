@@ -1,4 +1,4 @@
-<!--pages/gasoline/startOil/startOil.wxml-->
+<!--pages/gasoline/oiling/oiling.wxml-->
 <view class="container">
   <view>
     <block>
@@ -11,21 +11,13 @@
       <view class="weui-media-box__desc">{{address}}</view>
   </view>
 
-  <view class="weui-media-box weui-media-box_text">
-    <view class="weui-media-box__title weui-media-box__title_in-text">现金账户： {{cash_account}}     </view>
-    <view class="weui-cell__bd input-xl">
-        <input class="weui-input" type="number" placeholder="请输入金额" bindinput="setAccount" value="{{charging_amount}}"/>
-    </view>
-    <view class="weui-media-box__info info-xl">
-        <view class="weui-media-box__info__meta">
-          <icon type="info" size="15" color="red"></icon>  说明：输入加油金额需小于账户余额，输入为空默认加满
-        </view>
-    </view>
+  <view class="weui-media-box weui-media-box_text box_text_center">
+    <view class="weui-media-box__title weui-media-box__title_in-text">加油金额</view>
+    <view class="weui-cell__bd">{{charging_amount}}</view>
   </view>
 
-
   <view>
-    <button class='surebtn' bindtap="startCharging">开始加油</button>
+    <button class='surebtn' bindtap="startCharging" disabled='true'><view class="weui-loading"></view>正在加油</button>
   </view>
   <view class='weui-article'>
     <view class="weui-article__section">

@@ -1,3 +1,5 @@
+var app = getApp();
+var config = require('../common/config');
 Page({
 
   /**
@@ -9,6 +11,12 @@ Page({
 
   click:function()
   {
+    var order_id = wx.getStorageSync('order_id', order_id);
+    if (order_id) {
+      wx.navigateTo({
+        url: './oiling/oiling?order_id=' + order_id
+      });
+    }
     wx.scanCode({
       success: (res) => {
         console.log(res);
@@ -26,7 +34,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
   },
 
   /**
@@ -40,7 +47,41 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    var that = this;
+    let cookies = wx.getStorageSync('cookies');
+    wx.request({
+      url: config.load_charging_order,
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+        'Cookie': cookies,
+      },
+      complete: function (res) {
+        if (res.data.code == "S200") {
+          if (res.data.order_info !== '' && res.data.order_info.order_id) {
+            var order_id = res.data.order_info.order_id;
+            wx.setStorageSync('order_id', res.data.order_info.order_id);
+            wx.showModal({
+              title: '提示',
+              content: '您有未完成订单，请注意查看',
+              confirmText: "查看",
+              cancelText: "取消",
+              success: function (res) {
+                console.log(res);
+                if (res.confirm) {
+                  wx.navigateTo({
+                    url: './oiling/oiling?order_id=' + order_id
+                  });
+                }
+              }
+            });
+          }
+          else {
+            wx.setStorageSync('order_id', null);
+          }
+        }
+      }
+    });
   },
 
   /**

@@ -15,17 +15,17 @@
       <view class="weui-form-preview__hd">
           <view class="weui-form-preview__item">
               <view class="weui-form-preview__label">付款金额</view>
-              <view class="weui-form-preview__value_in-hd">{{total_cost}}</view>
+              <view class="weui-form-preview__value_in-hd">{{total_cost}}元</view>
           </view>
       </view>
       <view class="weui-form-preview__bd">
           <view class="weui-form-preview__item">
               <view class="weui-form-preview__label">总计加油数</view>
-              <view class="weui-form-preview__value">{{charging_vol}}</view>
+              <view class="weui-form-preview__value">{{charging_vol}}升</view>
           </view>
           <view class="weui-form-preview__item">
               <view class="weui-form-preview__label">账户余额</view>
-              <view class="weui-form-preview__value">{{cash_account}}</view>
+              <view class="weui-form-preview__value">{{cash_account}}元</view>
           </view>
           <view class="weui-form-preview__item">
               <view class="weui-form-preview__label">加油时间</view>
