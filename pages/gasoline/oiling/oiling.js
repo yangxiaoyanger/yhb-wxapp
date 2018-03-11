@@ -51,7 +51,7 @@ Page({
             if (res.data.status == 2) {
               clearInterval(interval);
               wx.setStorageSync('order_id', null);
-              wx.navigateTo({
+              wx.reLaunch({
                 url: '../finishOil/finishOil?order_id=' + order_id
               });
             }

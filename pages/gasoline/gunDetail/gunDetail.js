@@ -103,7 +103,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var order_id = wx.getStorageSync('order_id', order_id);
+    if (order_id) {
+      wx.navigateTo({
+        url: '../oiling/oiling?order_id=' + order_id
+      });
+    }
   },
 
   /**
