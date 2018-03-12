@@ -11,18 +11,12 @@ Page({
 
   click:function()
   {
-    var order_id = wx.getStorageSync('order_id', order_id);
-    if (order_id) {
-      wx.navigateTo({
-        url: './oiling/oiling?order_id=' + order_id
-      });
-    }
     wx.scanCode({
       success: (res) => {
         console.log(res);
         var gun_id = res.result.split('gun_id=')[1];
         if (res.errMsg == 'scanCode:ok') {
-          wx.navigateTo({
+          wx.redirectTo({
             url: './gunDetail/gunDetail?gun_id=' + gun_id
           })
         }
