@@ -14,7 +14,7 @@
   <view class="weui-media-box weui-media-box_text">
     <view class="weui-media-box__title weui-media-box__title_in-text">现金账户： {{cash_account}}     </view>
     <view class="weui-cell__bd input-xl">
-        <input class="weui-input" type="number" placeholder="请输入金额" bindinput="setAccount" value="{{charging_amount}}"/>
+        <input class="weui-input" type="number" placeholder="请输入金额" bindchange="setAccount" value="{{charging_amount}}"/>
     </view>
     <view class="weui-media-box__info info-xl">
         <view class="weui-media-box__info__meta">

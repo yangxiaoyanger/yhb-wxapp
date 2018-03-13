@@ -103,6 +103,23 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var order_id = wx.setStorageSync('order_id');
+    if (order_id) {
+      wx.showModal({
+        title: '提示',
+        content: '您有未完成订单，请注意查看',
+        confirmText: "查看",
+        cancelText: "取消",
+        success: function (res) {
+          console.log(res);
+          if (res.confirm) {
+            wx.navigateTo({
+              url: './oiling/oiling?order_id=' + order_id
+            });
+          }
+        }
+      });
+    }
   },
 
   /**
