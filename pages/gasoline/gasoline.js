@@ -11,18 +11,20 @@ Page({
 
   click:function()
   {
-    wx.scanCode({
-      success: (res) => {
-        console.log(res);
-        var gun_id = res.result.split('gun_id=')[1];
-        if (res.errMsg == 'scanCode:ok') {
-          wx.redirectTo({
-            url: './gunDetail/gunDetail?gun_id=' + gun_id
-          })
+    var order_id = wx.setStorageSync('order_id');
+    if (!order_id) {
+      wx.scanCode({
+        success: (res) => {
+          console.log(res);
+          var gun_id = res.result.split('gun_id=')[1];
+          if (res.errMsg == 'scanCode:ok') {
+            wx.redirectTo({
+              url: './gunDetail/gunDetail?gun_id=' + gun_id
+            })
+          }
         }
-      }
-    })
-    
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
