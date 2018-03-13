@@ -87,27 +87,31 @@ Page({
   },
 
   beforeStartCharging: function () {
-    var order_id = wx.setStorageSync('order_id');
-    if (order_id) {
-      wx.showModal({
-        title: '提示',
-        content: '您有未完成订单，请注意查看',
-        confirmText: "查看",
-        cancelText: "取消",
-        success: function (res) {
-          console.log(res);
-          if (res.confirm) {
+    var that = this;
+    let cookies = wx.getStorageSync('cookies');
+    wx.request({
+      url: config.load_charging_order,
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+        'Cookie': cookies,
+      },
+      complete: function (res) {
+        if (res.data.code == "S200") {
+          if (res.data.order_info !== '' && res.data.order_info.order_id) {
+            var order_id = res.data.order_info.order_id;
             wx.navigateTo({
-              url: './oiling/oiling?order_id=' + order_id
+              url: '../oiling/oiling?order_id=' + order_id
             });
           }
+          else {
+            wx.navigateTo({
+              url: '../startOil/startOil?gun_id=' + that.data.gun_id
+            })
+          }
         }
-      });
-    } else {
-      wx.navigateTo({
-        url: '../startOil/startOil?gun_id=' + this.data.gun_id
-      })
-    }
+      }
+    });
   },
   
   /**

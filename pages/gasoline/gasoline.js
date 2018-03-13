@@ -18,7 +18,7 @@ Page({
           console.log(res);
           var gun_id = res.result.split('gun_id=')[1];
           if (res.errMsg == 'scanCode:ok') {
-            wx.redirectTo({
+            wx.navigateTo({
               url: './gunDetail/gunDetail?gun_id=' + gun_id
             })
           }
