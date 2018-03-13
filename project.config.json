@@ -9,8 +9,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.7.2",
-	"appid": "XXX",
-	"projectname": "XXXX",
+	"appid": "xxx",
+	"projectname": "%E6%B2%B9%E6%83%A0%E5%AE%9D",
 	"condition": {
 		"search": {
 			"current": -1,

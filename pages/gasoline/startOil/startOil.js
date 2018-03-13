@@ -14,7 +14,8 @@ Page({
     pic_url: '',
     gun_id: '',
     price: 0,
-    charging_amount: ''
+    charging_amount: '',
+    disabled: false
   },
 
   /**
@@ -48,8 +49,35 @@ Page({
   },
   setAccount: function(e) {
     var that = this;
-    console.log(that.data.cash_account, e.detail.value)
-    if (Number(e.detail.value) > Number(that.data.cash_account)) {
+    that.setData({
+      charging_amount: e.detail.value
+    })
+    
+  },
+  // startCharging: function () {
+  //   wx.navigateTo({
+  //     url: '../finishOil/finishOil'
+  //   })
+    
+  // },
+  startCharging: function () {
+    var that = this;
+    if (Number(that.data.cash_account) < Number(that.data.price)) {
+      wx.showModal({
+        content: '您的余额不足，请先充值',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            that.setData({
+              disabled: true
+            })
+          }
+        }
+      });
+    } else if (that.data.charging_amount == '') {
+      that.data.charging_amount = that.data.cash_account;
+      that.startChargingemit();
+    } else if (Number(that.data.charging_amount) > Number(that.data.cash_account)) {
       wx.showModal({
         content: '所填金额超出您的余额，请重新输入',
         showCancel: false,
@@ -61,7 +89,7 @@ Page({
           }
         }
       });
-    } else if (Number(e.detail.value) < Number(that.data.price)) {
+    } else if (Number(that.data.charging_amount) < Number(that.data.price)) {
       wx.showModal({
         content: '所填金额至少应该大于油品价格，请重新输入',
         showCancel: false,
@@ -72,23 +100,14 @@ Page({
             })
           }
         }
-      });
-    }
-    else {
-      that.setData({
-        charging_amount: e.detail.value
       })
+    } else {
+      that.startChargingemit();
     }
   },
-  // startCharging: function () {
-  //   wx.navigateTo({
-  //     url: '../finishOil/finishOil'
-  //   })
-    
-  // },
-  startCharging: function () {
+
+  startChargingemit: function () {
     var that = this;
-    console.log('gun_id ' + that.data);
     var cookies = wx.getStorageSync('cookies');
     wx.request({
       url: config.startCharging + '&gun_id=' + that.data.gun_id + '&charging_amount=' + that.data.charging_amount,
