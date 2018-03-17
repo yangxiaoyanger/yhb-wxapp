@@ -1,45 +1,54 @@
 //index.js
 //获取应用实例
 var config = require('../common/config')
-var app = getApp()
+var app = getApp();
+var count = 1;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    info_list:[]
+    info_list:[],
+    lat: '',
+    lon: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
+    var that = this;
     wx.getLocation({
-      success: function(res) {
-        wx.request({
-          url: config.index,
-          method: "POST",
-          data: { lat: res.latitude, lon: res.longitude},
-          header: {
-            'content-type': 'application/json'
-            // 'Set-Cookie': js_code
+      success: function (res) {
+        that.setData({
+          lat: res.latitude,
+          lon: res.longitude
+        });
+        that.getStationList(1, res.latitude, res.longitude);
+      }
+    });
+  },
 
-          },
-          complete: function (res) {
-            console.log('获取所有加油站列表：', res)
-            if (res.data.code == "S200") {
-              that.setData({
-                info_list: res.data.info_list
-              })
-            }
-          }
-        })
+  getStationList: function (count, lat, lon) {
+    var that = this;
+    wx.request({
+      url: config.index + '&page_number=' + count,
+      method: "POST",
+      data: { lat: lat, lon: lon },
+      header: {
+        'content-type': 'application/json'
+        // 'Set-Cookie': js_code
       },
+      complete: function (res) {
+        console.log('获取所有加油站列表：', res)
+        if (res.data.code == "S200") {
+          that.setData({
+            info_list: that.data.info_list.concat(res.data.info_list)
+          })
+        }
+      }
     })
-   
-    
   },
 
   /**
@@ -53,6 +62,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log(count)
   },
 
   /**
@@ -73,14 +83,15 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+    var that = this;
+    count++;
+    that.getStationList(count, that.lat, that.lon);
   },
 
   pushMap:function(e)

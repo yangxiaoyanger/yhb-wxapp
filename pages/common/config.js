@@ -3,7 +3,7 @@ module.exports = {
   getCode: url + '/getcode',
   bind: url +'/auth/bind',
   login: url +'/auth/login',
-  index: url +'/station?qt=load_station_list&&page_number=1',
+  index: url +'/station?qt=load_station_list',
   getuserinfo: url + '/user/getuserinfo',
   queryForChargingRecord: url +'/user?qt=load_account_charging_record',
   recharge: url +'/recharge',
