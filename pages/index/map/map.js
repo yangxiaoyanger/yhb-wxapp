@@ -6,6 +6,7 @@ Page({
   data: {
     info:{},
     markers:[],
+    screenHeight: ''
     //location
   },
 
@@ -13,7 +14,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
+    var that = this;
+    // wx.getSystemInfo({
+    //   success: function (res) {
+    //    that.setData({
+    //      windowHeight: res.windowHeight
+    //    })
+    //   }
+    // })
     var data = JSON.parse(options.selectList) ;
     that.setData({
       info: data

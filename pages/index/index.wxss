@@ -1,10 +1,10 @@
 /**index.wxss**/
 .contentView
 {
-  position: relative;
+  /* position: relative; */
   margin-top: 33rpx;
   background-color: white;
-  height: 180rpx;
+  /* height: 180rpx; */
 }
 .word-break {
   width: 350rpx;
@@ -16,12 +16,16 @@
   display: inline-block;
 }
 .lineheight27 {
-  line-height: 27px;
-  height: 27px;
+  line-height: 54rpx;
+  height: 54rpx;
 }
 .distance {
   float: right;
-  font-size: 13px;
+  font-size: 26rpx;
   color: #999;
 
+}
+
+.weui-media-box {
+  padding: 20rpx;
 }
