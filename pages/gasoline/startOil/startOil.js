@@ -128,7 +128,7 @@ Page({
           let order_id = res.data.order_id;
           wx.setStorageSync('order_id', order_id);
           wx.redirectTo({
-            url: '../oiling/oiling?order_id=' + order_id
+            url: '/pages/gasoline/oiling/oiling?order_id=' + order_id
           });
         }
         else {

@@ -57,13 +57,13 @@ Page({
               wx.setStorageSync('order_id', null);
               console.log("订单完成，状态变成 ", res.data.status)
               wx.reLaunch({
-                url: '../finishOil/finishOil?order_id=' + order_id
+                url: '/pages/gasoline/finishOil/finishOil?order_id=' + order_id
               });
             } else if (res.data.status == 3) {
               clearInterval(interval);
               console.log("订单结束，状态变成 ", res.data.status);
               wx.reLaunch({
-                url: '../finishOil/finishOil?order_id=' + order_id
+                url: '/pages/gasoline/finishOil/finishOil?order_id=' + order_id
               });
             }
 

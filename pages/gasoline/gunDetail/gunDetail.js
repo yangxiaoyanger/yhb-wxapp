@@ -107,12 +107,12 @@ Page({
           if (res.data.order_info !== '' && res.data.order_info.order_id) {
             var order_id = res.data.order_info.order_id;
             wx.navigateTo({
-              url: '../oiling/oiling?order_id=' + order_id
+              url: '/pages/gasoline/oiling/oiling?order_id=' + order_id
             });
           }
           else {
             wx.navigateTo({
-              url: '../startOil/startOil?gun_id=' + that.data.gun_id
+              url: '/pages/gasoline/startOil/startOil?gun_id=' + that.data.gun_id
             })
           }
         }

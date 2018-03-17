@@ -94,7 +94,7 @@ Page({
   push:function()
   {
     wx.redirectTo({
-      url: '../recharge/recharge',
+      url: '/pages/mine/recharge/recharge',
     })
   },
 

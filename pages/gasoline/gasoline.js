@@ -20,7 +20,7 @@ Page({
           var gun_id = res.result.split('gun_id=')[1];
           if (res.errMsg == 'scanCode:ok') {
             wx.navigateTo({
-              url: './gunDetail/gunDetail?gun_id=' + gun_id
+              url: '/pages/gasoline/gunDetail/gunDetail?gun_id=' + gun_id
             })
           }
         }
@@ -69,7 +69,7 @@ Page({
                 console.log(res);
                 if (res.confirm) {
                   wx.navigateTo({
-                    url: './oiling/oiling?order_id=' + order_id
+                    url: '/pages/gasoline/oiling/oiling?order_id=' + order_id
                   });
                 }
               }
