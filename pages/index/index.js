@@ -91,7 +91,7 @@ Page({
   onReachBottom: function () {
     var that = this;
     count++;
-    that.getStationList(count, that.lat, that.lon);
+    that.getStationList(count, that.data.lat, that.data.lon);
   },
 
   pushMap:function(e)
