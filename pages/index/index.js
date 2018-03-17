@@ -99,8 +99,9 @@ Page({
     
     var index = parseInt(e.currentTarget.dataset.index);
     var selectList = this.data.info_list[index];
+    console.log(selectList, index, 888)
     wx.navigateTo({
-      url: '/app/map/map?selectList=' + JSON.stringify(selectList) ,
+      url: '/pages/index/map/map?selectList=' + JSON.stringify(selectList),
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
