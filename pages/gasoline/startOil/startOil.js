@@ -1,6 +1,7 @@
 // pages/gasoline/startOil/startOil.js
 var app = getApp();
-var config = require('../../common/config')
+var config = require('../../common/config');
+
 Page({
   /**
    * 页面的初始数据
@@ -15,16 +16,22 @@ Page({
     gun_id: '',
     price: 0,
     charging_amount: '',
-    disabled: false
+    disabled: false,
+    cookies: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('进入开始加油页面')
     var that = this;
-    that.setData({ gun_id: options.gun_id });
     var cookies = wx.getStorageSync('cookies');
+    that.setData({ 
+      gun_id: options.gun_id,
+      cookies: cookies
+     });
+    
     wx.request({
       url: config.load_gun_detail + '&gun_id=' + options.gun_id,
       method: 'GET',
@@ -33,6 +40,7 @@ Page({
         'Cookie': cookies,
       },
       complete: function (res) {
+        console.log('获取油枪详情：', res.data)
         if (res.data.code == "S200") {
           that.setData({
             station_name: res.data.station_name,
@@ -42,6 +50,19 @@ Page({
             pic_url: res.data.pic_url,
             price: res.data.price
           })
+          if (Number(res.data.cash_ccount) < Number(res.data.price)) {
+            wx.showModal({
+              content: '您的余额不足，请先充值',
+              showCancel: false,
+              success: function (res) {
+                if (res.confirm) {
+                  that.setData({
+                    disabled: true
+                  })
+                }
+              }
+            });
+          }
         }
       }
     });
@@ -49,35 +70,7 @@ Page({
   },
   setAccount: function(e) {
     var that = this;
-    that.setData({
-      charging_amount: e.detail.value
-    })
-    
-  },
-  // startCharging: function () {
-  //   wx.navigateTo({
-  //     url: '../finishOil/finishOil'
-  //   })
-    
-  // },
-  startCharging: function () {
-    var that = this;
-    if (Number(that.data.cash_account) < Number(that.data.price)) {
-      wx.showModal({
-        content: '您的余额不足，请先充值',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-            that.setData({
-              disabled: true
-            })
-          }
-        }
-      });
-    } else if (that.data.charging_amount == '') {
-      that.data.charging_amount = that.data.cash_account;
-      that.startChargingemit();
-    } else if (Number(that.data.charging_amount) > Number(that.data.cash_account)) {
+    if (Number(e.detail.value) > Number(that.data.cash_account)) {
       wx.showModal({
         content: '所填金额超出您的余额，请重新输入',
         showCancel: false,
@@ -89,7 +82,7 @@ Page({
           }
         }
       });
-    } else if (Number(that.data.charging_amount) < Number(that.data.price)) {
+    } else if (Number(e.detail.value) < Number(that.data.price)) {
       wx.showModal({
         content: '所填金额至少应该大于油品价格，请重新输入',
         showCancel: false,
@@ -102,13 +95,25 @@ Page({
         }
       })
     } else {
-      that.startChargingemit();
+      that.setData({
+        charging_amount: e.detail.value
+      })
     }
+    
+    
   },
-
-  startChargingemit: function () {
+  // startCharging: function () {
+  //   wx.navigateTo({
+  //     url: '../finishOil/finishOil'
+  //   })
+    
+  // },
+  startCharging: function () {
     var that = this;
-    var cookies = wx.getStorageSync('cookies');
+    if (that.data.charging_amount == '') {
+      that.data.charging_amount = that.data.cash_account;
+    }
+    var cookies = that.data.cookies;
     wx.request({
       url: config.startCharging + '&gun_id=' + that.data.gun_id + '&charging_amount=' + that.data.charging_amount,
       method: 'GET',
@@ -117,12 +122,19 @@ Page({
         'Cookie': cookies,
       },
       complete: function (res) {
+        console.log('点击开始加油按钮 result: ', res.data)
         if (res.data.code == "S200") {
           console.log('startCharging:  ' + res.data + '   cookirs: ' + cookies);
           let order_id = res.data.order_id;
           wx.setStorageSync('order_id', order_id);
           wx.redirectTo({
             url: '../oiling/oiling?order_id=' + order_id
+          });
+        }
+        else {
+          wx.showToast({
+            title: res.data.error_msg + ',请联系客服',
+            icon: 'none'
           });
         }
       }

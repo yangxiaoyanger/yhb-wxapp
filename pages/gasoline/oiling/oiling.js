@@ -1,6 +1,7 @@
 // pages/gasoline/oiling/oiling.js
 var app = getApp();
 var config = require('../../common/config')
+
 Page({
 
   /**
@@ -17,6 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('进入正在加油页面')
     var that = this;
     let cookies = wx.getStorageSync('cookies');
     wx.request({
@@ -27,6 +29,7 @@ Page({
         'Cookie': cookies,
       },
       complete: function (res) {
+        console.log('oiling页面查询正在加油的订单: ', res.data)
         if (res.data.code == "S200") {
           that.setData({
             station_name: res.data.order_info.station_name,
@@ -47,14 +50,23 @@ Page({
           'Cookie': cookies,
         },
         complete: function (res) {
+          console.log('oiling页面查询订单  ' + order_id + '的 result is :', res.data)
           if (res.data.code == "S200") {
             if (res.data.status == 2) {
               clearInterval(interval);
               wx.setStorageSync('order_id', null);
+              console.log("订单完成，状态变成 ", res.data.status)
+              wx.reLaunch({
+                url: '../finishOil/finishOil?order_id=' + order_id
+              });
+            } else if (res.data.status == 3) {
+              clearInterval(interval);
+              console.log("订单结束，状态变成 ", res.data.status);
               wx.reLaunch({
                 url: '../finishOil/finishOil?order_id=' + order_id
               });
             }
+
           }
         }
       });

@@ -1,5 +1,6 @@
 var app = getApp();
 var config = require('../../common/config');
+
 Page({
 
   /**
@@ -13,6 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (cb) {
+    console.log('进入消费记录页面')
     var that = this
     wx.getStorage({
       key: 'cookies',
@@ -54,8 +56,8 @@ Page({
       complete: function (re) {
 
         if (re.data.code == "S200") {
-          console.log("1111" + re.data.charing_list);
-  
+          console.log("用户消费记录：config.record" + re.data);
+
           that.setData({
             charing_list: re.data.charing_list
           })

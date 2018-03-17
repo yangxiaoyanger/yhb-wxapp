@@ -1,5 +1,6 @@
 var app = getApp();
 var config = require('../common/config');
+
 Page({
 
   /**
@@ -15,7 +16,7 @@ Page({
     if (!order_id) {
       wx.scanCode({
         success: (res) => {
-          console.log(res);
+          console.log('点击扫码结果：' + res.result);
           var gun_id = res.result.split('gun_id=')[1];
           if (res.errMsg == 'scanCode:ok') {
             wx.navigateTo({
@@ -30,6 +31,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('进入扫码页面')
   },
 
   /**
@@ -57,6 +59,7 @@ Page({
           if (res.data.order_info !== '' && res.data.order_info.order_id) {
             var order_id = res.data.order_info.order_id;
             wx.setStorageSync('order_id', res.data.order_info.order_id);
+            console.log('wx.setStorageSync("order_id")  ', res.data.order_info.order_id)
             wx.showModal({
               title: '提示',
               content: '您有未完成订单，请注意查看',

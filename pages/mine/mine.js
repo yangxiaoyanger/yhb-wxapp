@@ -1,6 +1,7 @@
 // pages/mine/mine.js
 var app = getApp();
-var config = require('../common/config')
+var config = require('../common/config');
+
 Page({
 
   /**
@@ -16,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (cb) {
-    
+    console.log('进入我的页面')
   },
   
 

@@ -28,6 +28,7 @@ Page({
 
           },
           complete: function (res) {
+            console.log('获取所有加油站列表：', res)
             if (res.data.code == "S200") {
               that.setData({
                 info_list: res.data.info_list
