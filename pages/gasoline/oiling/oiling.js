@@ -18,9 +18,43 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('进入正在加油页面')
+    var that  = this;
+    console.log('进入正在加油页面 onLoad');
+    var cookies = wx.getStorageSync('cookies');
+    if (!options.order_id) {
+      wx.request({
+        url: config.startCharging + '&gun_id=' + options.gun_id + '&charging_amount=' + options.charging_amount,
+        method: 'GET',
+        header: {
+          'content-type': 'application/json',
+          'Cookie': cookies,
+        },
+        complete: function (res) {
+          console.log('点击开始加油按钮 result: ', res.data)
+          if (res.data.code == "S200") {
+            that.loadChargingOrder();
+            console.log('startCharging:  ' + res.data + '   cookirs: ' + cookies);
+            let order_id = res.data.order_id;
+            wx.setStorageSync('order_id', order_id);
+            that.loadOrderStatus(order_id);
+          }
+          else {
+            wx.showToast({
+              title: res.data.error_msg + ',请联系客服',
+              icon: 'none'
+            });
+          }
+        }
+      });
+    }
+    else {
+      that.loadChargingOrder();
+      that.loadOrderStatus(options.order_id);
+    }
+  },
+  loadChargingOrder: function () {
     var that = this;
-    let cookies = wx.getStorageSync('cookies');
+    var cookies = wx.getStorageSync('cookies');
     wx.request({
       url: config.load_charging_order,
       method: 'GET',
@@ -29,8 +63,9 @@ Page({
         'Cookie': cookies,
       },
       complete: function (res) {
-        console.log('oiling页面查询正在加油的订单: ', res.data)
         if (res.data.code == "S200") {
+          console.log('oiling页面查询正在加油的订单: ', 'config.load_charging_order res', config.load_charging_order, res.data)
+
           that.setData({
             station_name: res.data.order_info.station_name,
             address: res.data.order_info.address,
@@ -40,8 +75,11 @@ Page({
         }
       }
     });
-    let order_id = options.order_id;
+  },
+  loadOrderStatus: function (order_id) {
+    var cookies = wx.getStorageSync('cookies');
     var interval = setInterval(function () {
+      console.log('setInterval里面')
       wx.request({
         url: config.loadOrderStatus + '&order_id=' + order_id,
         method: 'GET',
@@ -50,19 +88,20 @@ Page({
           'Cookie': cookies,
         },
         complete: function (res) {
-          console.log('oiling页面查询订单  ' + order_id + '的 result is :', res.data)
+          console.log('oiling页面查询订单  config.loadOrderStatus  ' + config.loadOrderStatus, order_id + '的 result is :', res.data);
+          console.log('cookies 与 config.loadOrderStatus', cookies, res)
           if (res.data.code == "S200") {
             if (res.data.status == 2) {
               clearInterval(interval);
               wx.setStorageSync('order_id', null);
               console.log("订单完成，状态变成 ", res.data.status)
-              wx.reLaunch({
+              wx.redirectTo({
                 url: '/pages/gasoline/finishOil/finishOil?order_id=' + order_id
               });
             } else if (res.data.status == 3) {
               clearInterval(interval);
               console.log("订单结束，状态变成 ", res.data.status);
-              wx.reLaunch({
+              wx.redirectTo({
                 url: '/pages/gasoline/finishOil/finishOil?order_id=' + order_id
               });
             }
@@ -84,14 +123,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    console.log('进入正在加油页面 onshow')
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+    console.log('进入正在加油页面 onhide')
   },
 
   /**

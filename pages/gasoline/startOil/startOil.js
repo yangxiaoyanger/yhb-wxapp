@@ -113,31 +113,9 @@ Page({
     if (that.data.charging_amount == '') {
       that.data.charging_amount = that.data.cash_account;
     }
-    var cookies = that.data.cookies;
-    wx.request({
-      url: config.startCharging + '&gun_id=' + that.data.gun_id + '&charging_amount=' + that.data.charging_amount,
-      method: 'GET',
-      header: {
-        'content-type': 'application/json',
-        'Cookie': cookies,
-      },
-      complete: function (res) {
-        console.log('点击开始加油按钮 result: ', res.data)
-        if (res.data.code == "S200") {
-          console.log('startCharging:  ' + res.data + '   cookirs: ' + cookies);
-          let order_id = res.data.order_id;
-          wx.setStorageSync('order_id', order_id);
-          wx.redirectTo({
-            url: '/pages/gasoline/oiling/oiling?order_id=' + order_id
-          });
-        }
-        else {
-          wx.showToast({
-            title: res.data.error_msg + ',请联系客服',
-            icon: 'none'
-          });
-        }
-      }
+    console.log('点击开始加油')
+    wx.redirectTo({
+      url: '/pages/gasoline/oiling/oiling?&gun_id=' + that.data.gun_id + '&charging_amount=' + that.data.charging_amount
     });
   },
   /**
@@ -158,14 +136,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+    console.log('startOil hide')
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+    console.log('startOil onUnload')
   },
 
   /**

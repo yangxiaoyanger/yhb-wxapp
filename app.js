@@ -29,5 +29,11 @@ App({
         }
       },
     });
+  },
+  onShow: function () {
+    console.log('app onshow')
+  },
+  onHide: function() {
+    console.log('app onHide');
   }
 })
