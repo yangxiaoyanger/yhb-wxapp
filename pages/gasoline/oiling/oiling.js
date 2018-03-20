@@ -18,39 +18,44 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that  = this;
-    console.log('进入正在加油页面 onLoad');
-    var cookies = wx.getStorageSync('cookies');
-    if (!options.order_id) {
-      wx.request({
-        url: config.startCharging + '&gun_id=' + options.gun_id + '&charging_amount=' + options.charging_amount,
-        method: 'GET',
-        header: {
-          'content-type': 'application/json',
-          'Cookie': cookies,
-        },
-        complete: function (res) {
-          console.log('点击开始加油按钮 result: ', res.data)
-          if (res.data.code == "S200") {
-            that.loadChargingOrder();
-            console.log('startCharging:  ' + res.data + '   cookirs: ' + cookies);
-            let order_id = res.data.order_id;
-            wx.setStorageSync('order_id', order_id);
-            that.loadOrderStatus(order_id);
-          }
-          else {
-            wx.showToast({
-              title: res.data.error_msg + ',请联系客服',
-              icon: 'none'
-            });
-          }
-        }
-      });
-    }
-    else {
-      that.loadChargingOrder();
-      that.loadOrderStatus(options.order_id);
-    }
+    var that = this;
+    that.setData({
+      gun_id: options.gun_id,
+      charging_amount: options.charging_amount
+    })
+    // var that  = this;
+    // console.log('进入正在加油页面 onLoad');
+    // var cookies = wx.getStorageSync('cookies');
+    // if (!options.order_id) {
+    //   wx.request({
+    //     url: config.startCharging + '&gun_id=' + options.gun_id + '&charging_amount=' + options.charging_amount,
+    //     method: 'GET',
+    //     header: {
+    //       'content-type': 'application/json',
+    //       'Cookie': cookies,
+    //     },
+    //     complete: function (res) {
+    //       console.log('点击开始加油按钮 result: ', res.data)
+    //       if (res.data.code == "S200") {
+    //         that.loadChargingOrder();
+    //         console.log('startCharging:  ' + res.data + '   cookirs: ' + cookies);
+    //         let order_id = res.data.order_id;
+    //         wx.setStorageSync('order_id', order_id);
+    //         that.loadOrderStatus(order_id);
+    //       }
+    //       else {
+    //         wx.showToast({
+    //           title: res.data.error_msg + ',请联系客服',
+    //           icon: 'none'
+    //         });
+    //       }
+    //     }
+    //   });
+    // }
+    // else {
+    //   that.loadChargingOrder();
+    //   that.loadOrderStatus(options.order_id);
+    // }
   },
   loadChargingOrder: function () {
     var that = this;
@@ -116,14 +121,46 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('进入正在加油页面 onshow')
+    console.log('进入正在加油页面 onshow');
+    var that = this;
+    var cookies = wx.getStorageSync('cookies');
+    if (!that.data.order_id) {
+      wx.request({
+        url: config.startCharging + '&gun_id=' + that.data.gun_id + '&charging_amount=' + that.data.charging_amount,
+        method: 'GET',
+        header: {
+          'content-type': 'application/json',
+          'Cookie': cookies,
+        },
+        complete: function (res) {
+          console.log('点击开始加油按钮 result: ', res.data)
+          if (res.data.code == "S200") {
+            that.loadChargingOrder();
+            console.log('startCharging:  ' + res.data + '   cookirs: ' + cookies);
+            let order_id = res.data.order_id;
+            wx.setStorageSync('order_id', order_id);
+            that.loadOrderStatus(order_id);
+          }
+          else {
+            wx.showToast({
+              title: res.data.error_msg + ',请联系客服',
+              icon: 'none'
+            });
+          }
+        }
+      });
+    }
+    else {
+      that.loadChargingOrder();
+      that.loadOrderStatus(that.data.order_id);
+    }
   },
 
   /**
