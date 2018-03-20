@@ -1,7 +1,17 @@
 <view class='mainView'>
    <view class='loginView'>
    
-    <input  class='iphone'  placeholder="充值金额(元):" bindinput ="num" />
+    <!-- <input  class='iphone'  placeholder="充值金额(元):" bindinput ="num" /> -->
+    <view class="page__bd">
+        <view class="weui-grids">
+            <block wx:for="{{rechargeList}}" wx:key="*this">
+                <view class="weui-grid" hover-class="weui-grid_active">
+                    <view class='weui-grid__recharge'>{{item.recharge}}</view>
+                    <view class="weui-grid__label weui-grid__discounted ">{{item.discounted}}</view>
+                </view>
+            </block>
+        </view>
+    </view>
 
 
    </view>
@@ -9,5 +19,8 @@
    <button class='surebtn'  bindtap="recharge">
         立即充值
     </button>
+    <view>
+
+    </view>
 
    </view>

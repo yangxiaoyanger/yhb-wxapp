@@ -7,7 +7,32 @@ Page({
    */
   data: {
     money:"",
-    list:[]
+    rechargeList:[
+      {
+        recharge: '5000元',
+        discounted: '赠200'
+      },
+      {
+        recharge: '3000元',
+        discounted: '150'
+      },
+      {
+        recharge: '2000元',
+        discounted: '优惠100'
+      },
+      {
+        recharge: '1000元',
+        discounted: '优惠50'
+      },
+      {
+        recharge: '800元',
+        discounted: '优惠50'
+      },
+      {
+        recharge: '500元',
+        discounted: '优惠50'
+      }
+    ]
   },
 
   recharge: function() {
