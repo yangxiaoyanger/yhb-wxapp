@@ -9,36 +9,44 @@ Page({
     money:"",
     rechargeList:[
       {
-        recharge: '5000元',
-        discounted: '赠200'
+        recharge: '10000',
+        discounted: '赠800'
       },
       {
-        recharge: '3000元',
-        discounted: '150'
+        recharge: '5000',
+        discounted: '赠300'
       },
       {
-        recharge: '2000元',
-        discounted: '优惠100'
+        recharge: '3000',
+        discounted: '赠150'
       },
       {
-        recharge: '1000元',
-        discounted: '优惠50'
+        recharge: '1000',
+        discounted: ' '
       },
       {
-        recharge: '800元',
-        discounted: '优惠50'
+        recharge: '800',
+        discounted: ' '
       },
       {
-        recharge: '500元',
-        discounted: '优惠50'
+        recharge: '500',
+        discounted: ' '
       }
     ]
+  },
+  selectMoney: function(e) {
+    console.log(e, 77)
+    var that = this;
+    that.setData({
+      money: e.target.dataset.key.recharge
+    })
   },
 
   recharge: function() {
     var that = this;
     var money = that.data.money;
     console.log("money  "+this.data.money);
+    
     var cookies = wx.getStorageSync("cookies");
     wx.request({
       url: config.recharge,

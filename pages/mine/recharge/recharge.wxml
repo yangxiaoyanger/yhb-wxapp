@@ -1,15 +1,24 @@
 <view class='mainView'>
    <view class='loginView'>
    
-    <!-- <input  class='iphone'  placeholder="充值金额(元):" bindinput ="num" /> -->
+     <view class="weui-cells__title">请选择金额</view>
     <view class="page__bd">
         <view class="weui-grids">
             <block wx:for="{{rechargeList}}" wx:key="*this">
-                <view class="weui-grid" hover-class="weui-grid_active">
-                    <view class='weui-grid__recharge'>{{item.recharge}}</view>
+                <button hover-class="weui-grid_active" class="{{money == item.recharge ? 'isChecked weui-grid' :  'weui-grid' }}"  bindtap="selectMoney" data-key="{{item}}">
+                    <view class='weui-grid__recharge'>{{item.recharge}}元</view>
                     <view class="weui-grid__label weui-grid__discounted ">{{item.discounted}}</view>
-                </view>
+                </button>
             </block>
+        </view>
+    </view>
+    <!-- <input  class='iphone'  placeholder="充值金额(元):" bindinput ="num"  />  -->
+    <view class="weui-cells__title">其他金额</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="充值金额(元)" bindinput ="num" value="{{money}}"/>
+            </view>
         </view>
     </view>
 

@@ -31,8 +31,29 @@
 }
 .weui-grid__recharge {
   font-size:.9rem;
+  line-height: 1.3em;
 }
 .weui-grid__discounted {
   font-size: .7rem;
   color: #199ed9;
+  line-height: 1.2em;
+}
+
+/* .weui-grid_active {
+  border: 1px solid #199ed9;
+} */
+.weui-grid {
+  padding: 5px;
+}
+
+.isChecked.weui-grid {
+  background: #199ed9;
+  color: #fff;
+}
+.isChecked.weui-grid .weui-grid__discounted {
+  color: #fff;
+}
+.weui-cell.weui-cell_input {
+  background: #fff;
+  border: none;
 }
