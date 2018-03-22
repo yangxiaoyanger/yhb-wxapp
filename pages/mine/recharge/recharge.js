@@ -10,19 +10,19 @@ Page({
     rechargeList:[
       {
         recharge: '10000',
-        discounted: '赠800'
+        discounted: '送1000'
       },
       {
         recharge: '5000',
-        discounted: '赠300'
+        discounted: '送400'
       },
       {
         recharge: '3000',
-        discounted: '赠150'
+        discounted: '送200'
       },
       {
         recharge: '1000',
-        discounted: ' '
+        discounted: '送50'
       },
       {
         recharge: '800',

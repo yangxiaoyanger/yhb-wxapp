@@ -23,11 +23,12 @@
 
 .weui-grid {
   width: 25%;
-  margin: 1rem 4%;
+  margin: .5rem 4%;
   background: #fff;
   border: 1rpm solid #199ed9;
   color: #199ed9;
   text-align:center;
+  height: 3rem;
 }
 .weui-grid__recharge {
   font-size:.9rem;
@@ -56,4 +57,7 @@
 .weui-cell.weui-cell_input {
   background: #fff;
   border: none;
+}
+.page__bd {
+  padding-bottom: 0;
 }

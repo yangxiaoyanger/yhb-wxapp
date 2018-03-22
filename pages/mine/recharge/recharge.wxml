@@ -1,5 +1,4 @@
 <view class='mainView'>
-   <view class='loginView'>
    
      <view class="weui-cells__title">请选择金额</view>
     <view class="page__bd">
@@ -23,13 +22,19 @@
     </view>
 
 
-   </view>
+  </view>
+    <button class='surebtn'  bindtap="recharge">立即充值</button>
+  <view>
 
-   <button class='surebtn'  bindtap="recharge">
-        立即充值
-    </button>
-    <view>
-
+  <!-- <view class='weui-article'>
+    <view class="weui-article__section">
+      <view class="weui-article__h3">充值活动: </view>
+      <view class="weui-article__p">
+          <p>1. 点击确认加油, 请确认油箱后开始加油</p>
+          <p>2. 加油的开始和结束都是在油机上完成</p>
+          <p>3. 加油过程中如遇突发故障, 请及时联系我们, 我们将竭诚为您服务</p>
+      </view>
     </view>
+  </view> -->
 
-   </view>
+ </view>
