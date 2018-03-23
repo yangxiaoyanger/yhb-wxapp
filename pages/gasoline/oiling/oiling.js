@@ -149,9 +149,24 @@ Page({
             that.loadOrderStatus(order_id);
           }
           else {
-            wx.showToast({
-              title: res.data.error_msg + ',请联系客服',
-              icon: 'none'
+            wx.showModal({
+              title: '系统错误',
+              content: res.data.error_msg + ',请联系客服',
+              confirmText: "确定",
+              cancelText: "取消",
+              success: function (res) {
+                console.log(res);
+                if (res.confirm) {
+                  wx.navigateBack({
+                    delta: 1
+                  })
+                } else {
+                  console.log('用户点击辅助操作');
+                  wx.navigateBack({
+                    delta: 1
+                  })
+                }
+              }
             });
           }
         }
