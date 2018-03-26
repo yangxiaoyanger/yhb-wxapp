@@ -35,6 +35,18 @@
 					"name": "充值",
 					"pathName": "pages/mine/recharge/recharge",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "充值卡",
+					"pathName": "pages/mine/card/card",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "充值卡",
+					"pathName": "pages/mine/detailed/detailed",
+					"query": ""
 				}
 			]
 		}

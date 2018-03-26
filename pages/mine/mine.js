@@ -112,6 +112,11 @@ Page({
     })
     
   },
+  chongzhika: function () {
+    wx.navigateTo({
+      url: './card/card',
+    })
+  },
   youhui: function () {
     wx.navigateTo({
       url: './discount/discount',

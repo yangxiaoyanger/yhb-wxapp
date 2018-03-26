@@ -16,6 +16,7 @@
     "pages/mine/account/account",
     "pages/mine/detailed/detailed",
     "pages/mine/recharge/recharge",
+    "pages/mine/card/card",
     "pages/logs/logs"
    
   ],

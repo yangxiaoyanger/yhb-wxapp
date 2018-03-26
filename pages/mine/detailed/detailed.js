@@ -1,5 +1,6 @@
 // pages/mine/detailed/detailed.js
 var app = getApp();
+var util = require('../../../utils/util.js')
 var config = require('../../common/config')
 Page({
 
@@ -8,7 +9,10 @@ Page({
    */
   data: {
     cash_account:"",
-    charing_list:[]
+    charing_list:[],
+    card_charing_list: [],
+    showOnlineDetail: true,
+    charge_type: 'online'
   },
 
   /**
@@ -16,6 +20,13 @@ Page({
    */
   onLoad: function (cb) {
     var that = this
+    var charge_type = cb.charge_type;
+    if (charge_type) {
+      that.setData({
+        charge_type: cb.charge_type,
+        showOnlineDetail: false
+      })
+    }
     wx.getStorage({
       key: 'cookies',
       success: function (res) {
@@ -25,7 +36,8 @@ Page({
           })
         }
         else {
-          that.getData(res.data)
+          that.getOnlineCharge(res.data)
+          that.getCardCharge(res.data)
         }
 
       },
@@ -42,7 +54,7 @@ Page({
     }
     typeof cb == 'function' && cb()
   },
-  getData: function (res) {
+  getOnlineCharge: function (res) {
     var that = this
     wx.request({
       url: config.queryForChargingRecord,
@@ -57,16 +69,44 @@ Page({
 
         if (re.data.code == "S200") {
           console.log("1111" + re.data.charing_list[0].recharge_time);
-          // var test = JSON.parse(re.data);
-          // var h = test.charing_list;
-          // console.log("222" + test);
-          // console.log("333" + test[0]);
           that.setData({
             cash_account: re.data.cash_account
-
           })
           that.setData({
             charing_list: re.data.charing_list
+          })
+        } else if (re.data.code == 'E102') {
+          wx.redirectTo({
+            url: '/pages/login/login'
+          })
+        }
+      }
+    })
+  },
+  getCardCharge: function (res) {
+    var that = this;
+    var cookies = wx.getStorageSync("cookies");
+    wx.request({
+      url: config.query_activate_card,
+      method: "GET",
+      header: {
+        'content-type': 'application/json',
+        'Cookie': cookies
+      },
+      complete: function (re) {
+        if (re.data.code == "S200") {
+          console.log("card charge query list: " + re.data.card_charing_list);
+          var card_charing_list = [];
+          for (let i = 0; i < re.data.cards.content.length; i++) {
+            let item = {};
+            item.denomination = (re.data.cards.content[i].denomination / 100).toFixed(2);
+            item.activateDate = util.formatTime(new Date (re.data.cards.content[i].activateDate)); 
+            item.cardNumber = re.data.cards.content[i].cardNumber;
+            card_charing_list.push(item);
+
+          }
+          that.setData({
+            card_charing_list: card_charing_list
           })
         } else if (re.data.code == 'E102') {
           wx.redirectTo({
@@ -79,6 +119,19 @@ Page({
 
 
   },
+  onlineCharge: function() {
+    var that = this;
+    that.setData({
+      showOnlineDetail: true
+    })
+  },
+  cardCharge: function () {
+    var that = this;
+    that.setData({
+      showOnlineDetail: false
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

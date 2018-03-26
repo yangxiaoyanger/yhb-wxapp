@@ -42,6 +42,7 @@
 <view class='topview1' bindtap ='xiaofei' >  <image src='../img/jilu.png' class='img2'></image> <view class='textend'>消费记录</view> </view>
 <view class='topview2' bindtap = 'yijian'>   <image src='../img/idea.png' class='img2'></image> <view class='textend'> 意见反馈</view> </view>
 <view class='topview3' bindtap = 'zhanghu'> <image src='../img/mingxi.png' class='img2'></image> <view class='textend'> 账户明细</view>  </view>
+<view class='topview3'bindtap ='chongzhika' > <image src='../img/jilu.png' class='img2'></image> <view class='textend'> 充值卡</view>  </view>
 <view class='topview4'bindtap ='youhui' > <image src='../img/jilu.png' class='img2'></image> <view class='textend'> 优惠券</view>  </view>
 
 

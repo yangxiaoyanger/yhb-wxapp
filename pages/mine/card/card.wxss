@@ -1,0 +1,14 @@
+/* pages/mine/card/card.wxss */
+.surebtn
+{
+  
+  background: #1677cb;
+  color: white;
+  margin-left: 30rpx;
+  margin-top: 40rpx;
+  margin-right: 30rpx;
+}
+
+.mainView {
+  background: #fff;
+}

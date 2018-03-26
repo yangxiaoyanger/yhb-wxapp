@@ -84,3 +84,20 @@
    margin-left: 70rpx;
   padding-top: 40rpx;
 }
+.tab-button {
+  margin: 10rpx 20rpx;
+  padding: 0;
+}
+
+.tab-button .weui-btn {
+  width: 50%;
+  /* height: 60rpx; */
+  line-height: 65rpx;
+  font-size: 18px;
+}
+
+.tab-button .weui-btn.active {
+  color: #fff;
+  background: #ef9755;
+  font-weight: 600;
+}
