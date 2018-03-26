@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/login/login",
     "pages/gasoline/gasoline",
-    "pages/gasoline/shop/shop",
     "pages/gasoline/gunDetail/gunDetail",
     "pages/gasoline/startOil/startOil",
     "pages/gasoline/oiling/oiling",
