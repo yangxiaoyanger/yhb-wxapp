@@ -19,12 +19,14 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    console.log("onload index")
     wx.getLocation({
-      success: function (res) {
+      complete: function (res) {
         that.setData({
           lat: res.latitude,
           lon: res.longitude
         });
+        console.log("获取用户警卫队：", res)
         that.getStationList(1, res.latitude, res.longitude);
       }
     });

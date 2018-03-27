@@ -62,13 +62,11 @@ Page({
       data: { page_number: '1' },
       header: {
         'content-type': 'application/json',
-        'Cookie': res,
-
+        'Cookie': res
       },
       complete: function (re) {
-
         if (re.data.code == "S200") {
-          console.log("1111" + re.data.charing_list[0].recharge_time);
+          console.log("获取用户的账户明细： " + re.data);
           that.setData({
             cash_account: re.data.cash_account
           })
