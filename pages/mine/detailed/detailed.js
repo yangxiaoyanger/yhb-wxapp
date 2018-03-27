@@ -98,7 +98,7 @@ Page({
           for (let i = 0; i < re.data.cards.content.length; i++) {
             let item = {};
             item.denomination = (re.data.cards.content[i].denomination / 100).toFixed(2);
-            item.activateDate = util.formatTime(new Date (re.data.cards.content[i].activateDate)); 
+            item.activateDate = util.formatUTCTime(re.data.cards.content[i].activateDate); 
             item.cardNumber = re.data.cards.content[i].cardNumber;
             card_charing_list.push(item);
 
