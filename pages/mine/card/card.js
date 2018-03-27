@@ -90,8 +90,9 @@ Page({
   },
   inputCardNumber: function(e) {
     var that = this;
+    // this.value = this.value.replace(/\s/g, '').replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, '$1 ');
     this.setData({
-      card_number: e.detail.value
+      card_number: e.detail.value.replace(/\s/g, '').replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, '$1 ')
     });
     if (that.data.card_number !== '' && that.data.card_password !== '') {
       that.setData({
