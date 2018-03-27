@@ -1,17 +1,9 @@
 <view class="mainView">
-
     <view class='topView'>
-    
         <image src='../../img/balance.png' class='imgaccount'></image>
-        <view class='titleLab'>
-        账户余额
-        </view>
-        <view class='money'>
-        {{cash_account}}
-        </view>
-        <button  class='btn'   bindtap="push"> 充值</button>
-    
-    
+        <view class='titleLab'>账户余额</view>
+        <view class='money'>{{cash_account}}</view>
+        <button class='btn' bindtap="push"> 充值</button>
     </view>
     <view class='tab-button'>
       <button class="weui-btn left-btn {{showOnlineDetail ? 'active' : ''}}" type="default" size="mini" bindtap='onlineCharge'>线上充值</button>
@@ -32,7 +24,6 @@
     <view wx:else>
       <view class='contentView'  wx:for="{{card_charing_list}}"   wx:fo  r-item="item" wx:key="*this" data-index="{{index}}">
         <image class='img' src='../../img/balance.png'></image>
-        <!-- <text class='title'></text> -->
         <text class='title'>{{item.cardNumber}}</text>
         <text class='endtitle'>{{item.activateDate}}</text>
         <text class='righttitle'>{{item.denomination}}</text>
@@ -42,5 +33,4 @@
         暂无数据
       </view> 
     </view>
-
 </view>

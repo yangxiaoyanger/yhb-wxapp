@@ -1,24 +1,25 @@
 .topView
 {
-  height: 190rpx;
+  /* height: 300rpx; */
   background: white;
   margin-top: 20rpx;
 }
 .titleLab
 {
-  /* float: left; */
   margin-left: 100rpx;
-  padding-top: 30rpx;
+  /* padding-top: 30rpx; */
+  height: 100rpx;
+  line-height: 100rpx;
 
 }
 .money
 {
    margin-left: 100rpx;
-   padding-top: 30rpx;
+   /* padding-top: 30rpx; */
+   height: 120rpx;
+   line-height: 120rpx;
    font-size: 50rpx;
-
    width: 130rpx;
-
 }
 .btn
 {
@@ -27,7 +28,7 @@
   height: 60rpx;
   background: #1677cb;
   color: white;
-  margin-top: -70rpx;
+  margin-top: -90rpx;
   line-height: 60rpx;
   margin-right: 20rpx;
    /* padding-top: 30rpx; */
@@ -81,8 +82,8 @@
   width: 20rpx;
   height: 20rpx;
   float: left;
-   margin-left: 70rpx;
-  padding-top: 40rpx;
+  margin-left: 70rpx;
+   padding-top: 40rpx; 
 }
 .tab-button {
   margin: 10rpx 30rpx;
