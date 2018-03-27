@@ -38,7 +38,7 @@ Page({
       url: config.activate_card,
       method: 'POST',
       data: {
-        card_number: that.data.card_number,
+        card_number: that.data.card_number.replace(/\s/g, ""),
         card_password: that.data.card_password
       },
       header: {
