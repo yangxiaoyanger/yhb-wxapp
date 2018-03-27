@@ -20,7 +20,7 @@
     <view wx:if="{{showOnlineDetail}}">
       <view class='contentView'  wx:for="{{charing_list}}"   wx:fo  r-item="item" wx:key="*this" data-index="{{index}}">
         <image class='img' src='../../img/wx_pay.png'></image>
-        <text class='title'>微信冲值</text>
+        <text class='title'>微信充值</text>
 
         <text class='endtitle'>{{item.recharge_money}}</text>
         <text class='righttitle'>{{item.recharge_time}}</text>
