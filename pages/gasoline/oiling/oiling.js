@@ -21,7 +21,8 @@ Page({
     var that = this;
     that.setData({
       gun_id: options.gun_id,
-      charging_amount: options.charging_amount
+      charging_amount: options.charging_amount,
+      order_id: options.order_id
     })
     // var that  = this;
     // console.log('进入正在加油页面 onLoad');
@@ -140,7 +141,7 @@ Page({
           'Cookie': cookies,
         },
         complete: function (res) {
-          console.log('点击开始加油按钮 result: ', res.data)
+          console.log('开始新的加油的result: ', res.data)
           if (res.data.code == "S200") {
             that.loadChargingOrder();
             console.log('startCharging:  ' + res.data + '   cookirs: ' + cookies);
@@ -150,8 +151,8 @@ Page({
           }
           else {
             wx.showModal({
-              title: '系统错误',
-              content: res.data.error_msg + ',请联系客服',
+              title: '',
+              content: res.data.error_msg,
               confirmText: "确定",
               cancelText: "取消",
               success: function (res) {
@@ -173,6 +174,7 @@ Page({
       });
     }
     else {
+      console.log('已经存在正在加油订单')
       that.loadChargingOrder();
       that.loadOrderStatus(that.data.order_id);
     }

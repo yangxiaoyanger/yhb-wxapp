@@ -9,7 +9,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.7.2",
-	"appid": "xxx",
+	"appid": "wxf50a8651f8288b96",
 	"projectname": "%E6%B2%B9%E6%83%A0%E5%AE%9D",
 	"condition": {
 		"search": {
@@ -20,15 +20,15 @@
 			"current": -1,
 			"list": []
 		},
-		"game": {
-			"list": []
-		},
 		"plugin": {
 			"current": -1,
 			"list": []
 		},
+		"game": {
+			"list": []
+		},
 		"miniprogram": {
-			"current": -1,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,

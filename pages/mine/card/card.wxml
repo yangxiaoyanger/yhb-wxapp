@@ -5,7 +5,7 @@
         <view class="weui-label">卡号</view>
     </view>
     <view class="weui-cell__bd">
-        <input class="weui-input" placeholder="请输入充值卡号" bindinput ="inputCardNumber"/>
+        <input class="weui-input" placeholder="请输入充值卡号" bindinput ="inputCardNumber" value="{{card_number}}"/>
     </view>
   </view>
   <view class="weui-cell weui-cell_input">
@@ -13,7 +13,7 @@
         <view class="weui-label">密码</view>
     </view>
     <view class="weui-cell__bd">
-        <input class="weui-input" placeholder="请输入充值卡密码" bindinput ="inputPassword"/>
+        <input class="weui-input" placeholder="请输入充值卡密码" bindinput ="inputPassword" value="{{card_password}}"/>
     </view>
   </view>
   </view>

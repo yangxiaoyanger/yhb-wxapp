@@ -61,3 +61,18 @@
 .page__bd {
   padding-bottom: 0;
 }
+.weui-article {
+  margin-top: 60rpx;
+}
+.weui-article__h3 {
+  font-size: 32rpx;
+}
+.weui-article__p  p{
+  display: block;
+}
+.weui-media-box__info__meta {
+  color: red;
+}
+.weui-media-box__info {
+  margin-left: 20rpx;
+}

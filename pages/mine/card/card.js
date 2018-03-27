@@ -66,7 +66,23 @@ Page({
             }
           });
         } else {
-          
+          wx.showModal({
+            title: '',
+            content: '卡号密码不正确, 激活失败',
+            confirmText: "确定",
+            cancelText: "取消",
+            success: function (res) {
+              if (res.confirm) {
+                console.log('点击确定')
+                that.setData({
+                  card_number: '',
+                  card_password: ''
+                })
+              } else {
+                console.log('用户点击辅助操作')
+              }
+            }
+          });
         }
       }
     })
