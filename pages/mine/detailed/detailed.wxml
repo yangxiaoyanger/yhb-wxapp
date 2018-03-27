@@ -14,8 +14,8 @@
     
     </view>
     <view class='tab-button'>
-      <button class="weui-btn {{showOnlineDetail ? 'active' : ''}}" type="default" size="mini" bindtap='onlineCharge'>线上充值</button>
-      <button class="weui-btn {{!showOnlineDetail ? 'active' : ''}}" type="default" size="mini" bindtap='cardCharge'>充值卡        </button>
+      <button class="weui-btn left-btn {{showOnlineDetail ? 'active' : ''}}" type="default" size="mini" bindtap='onlineCharge'>线上充值</button>
+      <button class="weui-btn right-btn {{!showOnlineDetail ? 'active' : ''}}" type="default" size="mini" bindtap='cardCharge'>充值卡        </button>
     </view>
     <view wx:if="{{showOnlineDetail}}">
       <view class='contentView'  wx:for="{{charing_list}}"   wx:fo  r-item="item" wx:key="*this" data-index="{{index}}">
@@ -31,7 +31,7 @@
     </view>
     <view wx:else>
       <view class='contentView'  wx:for="{{card_charing_list}}"   wx:fo  r-item="item" wx:key="*this" data-index="{{index}}">
-        <image class='img' src='../../img/wx_pay.png'></image>
+        <image class='img' src='../../img/balance.png'></image>
         <!-- <text class='title'></text> -->
         <text class='title'>{{item.cardNumber}}</text>
         <text class='endtitle'>{{item.activateDate}}</text>

@@ -85,19 +85,31 @@
   padding-top: 40rpx;
 }
 .tab-button {
-  margin: 10rpx 20rpx;
+  margin: 10rpx 30rpx;
   padding: 0;
 }
 
-.tab-button .weui-btn {
+.tab-button .weui-btn.right-btn {
   width: 50%;
   /* height: 60rpx; */
   line-height: 65rpx;
   font-size: 18px;
+  border-top-left-radius: 0;
+   border-bottom-left-radius: 0;
+
+}
+.tab-button .weui-btn.left-btn {
+  width: 50%;
+  /* height: 60rpx; */
+  line-height: 65rpx;
+  font-size: 18px;
+  border-top-right-radius: 0;
+   border-bottom-right-radius: 0;
+
 }
 
 .tab-button .weui-btn.active {
   color: #fff;
-  background: #ef9755;
+  background: #f17b2c;
   font-weight: 600;
 }
